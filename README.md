@@ -12,7 +12,7 @@
 ### Установка
 
 ```shell
-composer require akh/Typograf
+composer require akh/typograf
 ```
 
 ### Использование
