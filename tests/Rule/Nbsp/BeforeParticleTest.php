@@ -1,0 +1,24 @@
+<?php
+
+namespace Rule\Nbsp;
+
+use akh\Typograf\Rule\Nbsp\BeforeParticle;
+use PHPUnit\Framework\TestCase;
+
+class BeforeParticleTest extends TestCase
+{
+
+    public function testHandler()
+    {
+        $arTests = [
+            ['Может ли?', 'Может&nbsp;ли?'],
+            ['Может ли&nbsp;быть?', 'Может&nbsp;ли быть?'],
+            ['Может же быть?', 'Может&nbsp;же быть?']
+        ];
+
+        foreach ($arTests as $arTest) {
+            $test = (new BeforeParticle())->Handler($arTest[0]);
+            $this->assertSame($test, $arTest[1]);
+        }
+    }
+}

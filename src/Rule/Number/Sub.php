@@ -1,0 +1,18 @@
+<?php
+
+namespace akh\Typograf\Rule\Number;
+
+use akh\Typograf\Rule\AbstractRule;
+
+class Sub extends AbstractRule
+{
+    public $name = 'Нижний индекс для _{n}';
+
+    public function handler($text)
+    {
+        $pattern = '#([' . $this->char['char'] . '0-9])_{([^}]+)}([^@' . $this->char['char'] . '0-9]|$)#iu';
+        $replace = '$1<sub>$2</sub>$3';
+
+        return preg_replace($pattern, $replace, $text);
+    }
+}

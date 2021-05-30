@@ -1,0 +1,26 @@
+<?php
+
+namespace akh\Typograf\Rule\Nbsp;
+
+use akh\Typograf\Rule\AbstractRule;
+
+class BeforeParticle extends AbstractRule
+{
+    public $name = 'Нераз. пробел перед «ли», «ль», «же», «бы», «б»';
+
+    public $sort = 510;
+
+    public function handler($text)
+    {
+        $particles = '(ли|ль|же|ж|бы|б)';
+        $pattern = '#([' . $this->char['char'] . ']) ' . $particles . '([.,;:?!"‘“»]|\s|&nbsp;)#iu';
+
+        return preg_replace_callback(
+            $pattern,
+            function ($matches) {
+                return $matches[1] . $this->char['nbsp'] . $matches[2] . ($matches[3] === '&nbsp;' ? ' ' : $matches[3]);
+            },
+            $text
+        );
+    }
+}
