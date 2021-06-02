@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\AfterPunctuation;
+use Akh\Typograf\Rule\Space\AfterPunctuation;
 use PHPUnit\Framework\TestCase;
 
 class AfterPunctuationTest extends TestCase

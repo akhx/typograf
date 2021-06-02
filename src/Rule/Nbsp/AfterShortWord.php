@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Nbsp;
+namespace Akh\Typograf\Rule\Nbsp;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class AfterShortWord extends AbstractRule
 {

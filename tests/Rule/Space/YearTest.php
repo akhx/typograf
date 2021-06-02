@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\Year;
+use Akh\Typograf\Rule\Space\Year;
 use PHPUnit\Framework\TestCase;
 
 class YearTest extends TestCase

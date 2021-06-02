@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Number;
+namespace Akh\Typograf\Rule\Number;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class Sup extends AbstractRule
 {

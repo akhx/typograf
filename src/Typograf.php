@@ -1,6 +1,6 @@
 <?php
 
-namespace akh\Typograf;
+namespace Akh\Typograf;
 
 class Typograf
 {

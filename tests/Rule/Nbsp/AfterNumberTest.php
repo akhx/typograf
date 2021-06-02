@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\AfterNumber;
+use Akh\Typograf\Rule\Nbsp\AfterNumber;
 use PHPUnit\Framework\TestCase;
 
 class AfterNumberTest extends TestCase

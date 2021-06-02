@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\DayMonth;
+use Akh\Typograf\Rule\Nbsp\DayMonth;
 use PHPUnit\Framework\TestCase;
 
 class DayMonthTest extends TestCase

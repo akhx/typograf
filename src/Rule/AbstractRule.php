@@ -1,6 +1,6 @@
 <?php
 
-namespace akh\Typograf\Rule;
+namespace Akh\Typograf\Rule;
 
 abstract class AbstractRule
 {

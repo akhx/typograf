@@ -2,7 +2,7 @@
 
 namespace Rule\Dash;
 
-use akh\Typograf\Rule\Dash\ToLiboNebud;
+use Akh\Typograf\Rule\Dash\ToLiboNebud;
 use PHPUnit\Framework\TestCase;
 
 class ToLiboNebudTest extends TestCase

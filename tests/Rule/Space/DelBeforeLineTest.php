@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\DelBeforeLine;
+use Akh\Typograf\Rule\Space\DelBeforeLine;
 use PHPUnit\Framework\TestCase;
 
 class DelBeforeLineTest extends TestCase

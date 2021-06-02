@@ -2,7 +2,7 @@
 
 namespace Rule\Number;
 
-use akh\Typograf\Rule\Number\DimensionSup;
+use Akh\Typograf\Rule\Number\DimensionSup;
 use PHPUnit\Framework\TestCase;
 
 class DimensionSupTest extends TestCase

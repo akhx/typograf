@@ -2,7 +2,7 @@
 
 namespace Rule\Html;
 
-use akh\Typograf\Rule\Html\Paragraph;
+use Akh\Typograf\Rule\Html\Paragraph;
 use PHPUnit\Framework\TestCase;
 
 class ParagraphTest extends TestCase

@@ -2,7 +2,7 @@
 
 namespace Rule\Symbol;
 
-use akh\Typograf\Rule\Symbol\Math;
+use Akh\Typograf\Rule\Symbol\Math;
 use PHPUnit\Framework\TestCase;
 
 class MathTest extends TestCase

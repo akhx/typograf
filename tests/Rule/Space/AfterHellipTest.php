@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\AfterHellip;
+use Akh\Typograf\Rule\Space\AfterHellip;
 use PHPUnit\Framework\TestCase;
 
 class AfterHellipTest extends TestCase

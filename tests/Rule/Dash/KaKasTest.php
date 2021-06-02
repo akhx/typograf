@@ -2,7 +2,7 @@
 
 namespace Rule\Dash;
 
-use akh\Typograf\Rule\Dash\KaKas;
+use Akh\Typograf\Rule\Dash\KaKas;
 use PHPUnit\Framework\TestCase;
 
 class KaKasTest extends TestCase

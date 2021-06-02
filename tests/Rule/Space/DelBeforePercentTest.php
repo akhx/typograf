@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\DelBeforePercent;
+use Akh\Typograf\Rule\Space\DelBeforePercent;
 use PHPUnit\Framework\TestCase;
 
 class DelBeforePercentTest extends TestCase

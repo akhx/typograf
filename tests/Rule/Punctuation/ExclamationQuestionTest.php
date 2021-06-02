@@ -2,7 +2,7 @@
 
 namespace Rule\Punctuation;
 
-use akh\Typograf\Rule\Punctuation\ExclamationQuestion;
+use Akh\Typograf\Rule\Punctuation\ExclamationQuestion;
 use PHPUnit\Framework\TestCase;
 
 class ExclamationQuestionTest extends TestCase

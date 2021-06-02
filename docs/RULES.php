@@ -1,12 +1,12 @@
 <?php
 
 require_once "../vendor/autoload.php";
-$t = new akh\Typograf\Typograf();
+$t = new Akh\Typograf\Typograf();
 
 $arRules = [];
 foreach ($t->getRules() as $rule) {
     $class = get_class($rule);
-    $class = str_replace('akh\Typograf\\', '', $class);
+    $class = str_replace('Akh\Typograf\\', '', $class);
     $arClass = explode("\\", $class);
     $class = str_replace('Rule\\', '', $class);
     if (empty($arRules[$arClass[1]])) {

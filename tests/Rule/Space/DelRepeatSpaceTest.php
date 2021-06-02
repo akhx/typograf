@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\DelRepeatSpace;
+use Akh\Typograf\Rule\Space\DelRepeatSpace;
 use PHPUnit\Framework\TestCase;
 
 class DelRepeatSpaceTest extends TestCase

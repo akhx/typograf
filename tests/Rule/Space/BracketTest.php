@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\Bracket;
+use Akh\Typograf\Rule\Space\Bracket;
 use PHPUnit\Framework\TestCase;
 
 class BracketTest extends TestCase

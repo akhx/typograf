@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\DelBeforePunctuation;
+use Akh\Typograf\Rule\Space\DelBeforePunctuation;
 use PHPUnit\Framework\TestCase;
 
 class DelBeforePunctuationTest extends TestCase

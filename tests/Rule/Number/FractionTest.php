@@ -2,7 +2,7 @@
 
 namespace Rule\Number;
 
-use akh\Typograf\Rule\Number\Fraction;
+use Akh\Typograf\Rule\Number\Fraction;
 use PHPUnit\Framework\TestCase;
 
 class FractionTest extends TestCase

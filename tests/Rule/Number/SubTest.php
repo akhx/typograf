@@ -2,7 +2,7 @@
 
 namespace Rule\Number;
 
-use akh\Typograf\Rule\Number\Sub;
+use Akh\Typograf\Rule\Number\Sub;
 use PHPUnit\Framework\TestCase;
 
 class SubTest extends TestCase

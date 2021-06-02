@@ -2,7 +2,7 @@
 
 namespace Rule\Symbol;
 
-use akh\Typograf\Rule\Symbol\Arrow;
+use Akh\Typograf\Rule\Symbol\Arrow;
 use PHPUnit\Framework\TestCase;
 
 class ArrowTest extends TestCase

@@ -2,7 +2,7 @@
 
 namespace Rule\Symbol;
 
-use akh\Typograf\Rule\Symbol\Copy;
+use Akh\Typograf\Rule\Symbol\Copy;
 use PHPUnit\Framework\TestCase;
 
 class CopyTest extends TestCase

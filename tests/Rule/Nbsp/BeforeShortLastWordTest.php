@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\BeforeShortLastWord;
+use Akh\Typograf\Rule\Nbsp\BeforeShortLastWord;
 use PHPUnit\Framework\TestCase;
 
 class BeforeShortLastWordTest extends TestCase

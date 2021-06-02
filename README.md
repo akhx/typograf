@@ -18,7 +18,7 @@ composer require akh/typograf
 ### Использование
 
 ```php
-$t = new akh\Typograf\Typograf();
+$t = new Akh\Typograf\Typograf();
 $typoText = $t->apply('"Привет, мир!"');
 echo $typoText; //«Привет, мир!»
 ```
@@ -26,7 +26,7 @@ echo $typoText; //«Привет, мир!»
 #### Включение и выключение правил
 
 ```php
-$t = new akh\Typograf\Typograf();
+$t = new Akh\Typograf\Typograf();
 // Включить правило
 $t->enableRule('Nbsp\ReplaceNbsp');
 // Включить все правила в группе 

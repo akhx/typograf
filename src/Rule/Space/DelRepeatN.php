@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Space;
+namespace Akh\Typograf\Rule\Space;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class DelRepeatN extends AbstractRule
 {

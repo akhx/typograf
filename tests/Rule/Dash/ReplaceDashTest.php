@@ -2,7 +2,7 @@
 
 namespace Rule\Dash;
 
-use akh\Typograf\Rule\Dash\ReplaceDash;
+use Akh\Typograf\Rule\Dash\ReplaceDash;
 use PHPUnit\Framework\TestCase;
 
 class ReplaceDashTest extends TestCase

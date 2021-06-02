@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "akh\\Typograf\\": "src"
+      "Akh\\Typograf\\": "src"
     }
   },
   "require": {

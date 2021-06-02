@@ -2,7 +2,7 @@
 
 namespace Rule\Quote;
 
-use akh\Typograf\Rule\Quote\Quote;
+use Akh\Typograf\Rule\Quote\Quote;
 use PHPUnit\Framework\TestCase;
 
 class QuoteTest extends TestCase

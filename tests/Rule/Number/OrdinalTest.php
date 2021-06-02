@@ -2,7 +2,7 @@
 
 namespace Rule\Number;
 
-use akh\Typograf\Rule\Number\Ordinal;
+use Akh\Typograf\Rule\Number\Ordinal;
 use PHPUnit\Framework\TestCase;
 
 class OrdinalTest extends TestCase

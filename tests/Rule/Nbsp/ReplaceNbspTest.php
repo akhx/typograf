@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\ReplaceNbsp;
+use Akh\Typograf\Rule\Nbsp\ReplaceNbsp;
 use PHPUnit\Framework\TestCase;
 
 class ReplaceNbspTest extends TestCase

@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Punctuation;
+namespace Akh\Typograf\Rule\Punctuation;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class Apostrophe extends AbstractRule
 {

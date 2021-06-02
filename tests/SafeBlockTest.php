@@ -1,7 +1,7 @@
 <?php
 
 
-use akh\Typograf\SafeBlock;
+use Akh\Typograf\SafeBlock;
 use PHPUnit\Framework\TestCase;
 
 class SafeBlockTest extends TestCase

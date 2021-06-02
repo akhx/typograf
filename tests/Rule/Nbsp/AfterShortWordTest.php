@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\AfterShortWord;
+use Akh\Typograf\Rule\Nbsp\AfterShortWord;
 use PHPUnit\Framework\TestCase;
 
 class AfterShortWordTest extends TestCase

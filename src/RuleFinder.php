@@ -1,6 +1,6 @@
 <?php
 
-namespace akh\Typograf;
+namespace Akh\Typograf;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -13,7 +13,7 @@ class RuleFinder
     public static function getAllRule(): array
     {
         if (empty(static::$rules)) {
-            $baseClass = new ReflectionClass('akh\Typograf\Rule\AbstractRule');
+            $baseClass = new ReflectionClass('Akh\Typograf\Rule\AbstractRule');
 
             $files = new RecursiveIteratorIterator(
                 new RecursiveDirectoryIterator(
@@ -38,7 +38,7 @@ class RuleFinder
     {
         $class = str_replace(
             [__DIR__, '.php'],
-            ['akh\Typograf', ''],
+            ['Akh\Typograf', ''],
             $path
         );
 

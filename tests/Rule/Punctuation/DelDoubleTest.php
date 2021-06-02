@@ -2,7 +2,7 @@
 
 namespace Rule\Punctuation;
 
-use akh\Typograf\Rule\Punctuation\DelDouble;
+use Akh\Typograf\Rule\Punctuation\DelDouble;
 use PHPUnit\Framework\TestCase;
 
 class DelDoubleTest extends TestCase

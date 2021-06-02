@@ -2,7 +2,7 @@
 
 namespace Rule\Number;
 
-use akh\Typograf\Rule\Number\Sup;
+use Akh\Typograf\Rule\Number\Sup;
 use PHPUnit\Framework\TestCase;
 
 class SupTest extends TestCase

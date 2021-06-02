@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\DelRepeatN;
+use Akh\Typograf\Rule\Space\DelRepeatN;
 use PHPUnit\Framework\TestCase;
 
 class DelRepeatNTest extends TestCase

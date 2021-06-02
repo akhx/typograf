@@ -2,7 +2,7 @@
 
 namespace Rule\Punctuation;
 
-use akh\Typograf\Rule\Punctuation\Apostrophe;
+use Akh\Typograf\Rule\Punctuation\Apostrophe;
 use PHPUnit\Framework\TestCase;
 
 class ApostropheTest extends TestCase

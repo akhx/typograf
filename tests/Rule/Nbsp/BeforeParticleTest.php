@@ -2,7 +2,7 @@
 
 namespace Rule\Nbsp;
 
-use akh\Typograf\Rule\Nbsp\BeforeParticle;
+use Akh\Typograf\Rule\Nbsp\BeforeParticle;
 use PHPUnit\Framework\TestCase;
 
 class BeforeParticleTest extends TestCase

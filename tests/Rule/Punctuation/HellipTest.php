@@ -2,7 +2,7 @@
 
 namespace Rule\Punctuation;
 
-use akh\Typograf\Rule\Punctuation\Hellip;
+use Akh\Typograf\Rule\Punctuation\Hellip;
 use PHPUnit\Framework\TestCase;
 
 class HellipTest extends TestCase

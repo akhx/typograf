@@ -2,7 +2,7 @@
 
 namespace Rule\Punctuation;
 
-use akh\Typograf\Rule\Punctuation\ANo;
+use Akh\Typograf\Rule\Punctuation\ANo;
 use PHPUnit\Framework\TestCase;
 
 class ANoTest extends TestCase

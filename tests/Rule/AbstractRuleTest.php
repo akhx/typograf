@@ -2,14 +2,14 @@
 
 namespace Rule;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 use PHPUnit\Framework\TestCase;
 
 class AbstractRuleTest extends TestCase
 {
     public function testSetActive()
     {
-        $stub = $this->getMockForAbstractClass('\akh\Typograf\Rule\AbstractRule');
+        $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         foreach ([false, true] as $flag) {
             $stub->setActive($flag);
             $this->assertSame($stub->getActive(), $flag);
@@ -18,7 +18,7 @@ class AbstractRuleTest extends TestCase
 
     public function testSetSort()
     {
-        $stub = $this->getMockForAbstractClass('\akh\Typograf\Rule\AbstractRule');
+        $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         foreach ([-100, 0, 100, 1000] as $sort) {
             $stub->setSort($sort);
             $this->assertSame($stub->getSort(), $sort);
@@ -27,7 +27,7 @@ class AbstractRuleTest extends TestCase
 
     public function testSetSettings()
     {
-        $stub = $this->getMockForAbstractClass('\akh\Typograf\Rule\AbstractRule');
+        $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         $arTests = [
             [
                 'len' => '1',
@@ -48,7 +48,7 @@ class AbstractRuleTest extends TestCase
 
     public function testSetSetting()
     {
-        $stub = $this->getMockForAbstractClass('\akh\Typograf\Rule\AbstractRule');
+        $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         $arTests = [
             [
                 'len',

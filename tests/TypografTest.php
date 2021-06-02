@@ -1,7 +1,7 @@
 <?php
 
 
-use akh\Typograf\Typograf;
+use Akh\Typograf\Typograf;
 use PHPUnit\Framework\TestCase;
 
 class TypografTest extends TestCase
@@ -12,7 +12,7 @@ class TypografTest extends TestCase
         $typo->enableRule('Nbsp\ReplaceNbsp');
 
         foreach ($typo->getRules() as $ruleName => $rule) {
-            if ($ruleName === 'akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
+            if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
                 $this->assertSame($rule->getActive(), true);
             }
         }
@@ -25,7 +25,7 @@ class TypografTest extends TestCase
         $typo->enableRule('Nbsp\ReplaceNbsp');
 
         foreach ($typo->getRules() as $ruleName => $rule) {
-            if ($ruleName === 'akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
+            if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
                 $this->assertSame($rule->getActive(), true);
             } else {
                 $this->assertSame($rule->getActive(), false);
@@ -173,6 +173,6 @@ class TypografTest extends TestCase
     {
         $typo = new Typograf();
         $class = get_class($typo->getSafeBlock());
-        $this->assertSame($class, 'akh\Typograf\SafeBlock');
+        $this->assertSame($class, 'Akh\Typograf\SafeBlock');
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Dash;
+namespace Akh\Typograf\Rule\Dash;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class KaKas extends AbstractRule
 {

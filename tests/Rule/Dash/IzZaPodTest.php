@@ -2,7 +2,7 @@
 
 namespace Rule\Dash;
 
-use akh\Typograf\Rule\Dash\IzZaPod;
+use Akh\Typograf\Rule\Dash\IzZaPod;
 use PHPUnit\Framework\TestCase;
 
 class IzZaPodTest extends TestCase

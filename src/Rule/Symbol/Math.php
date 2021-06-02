@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Symbol;
+namespace Akh\Typograf\Rule\Symbol;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class Math extends AbstractRule
 {

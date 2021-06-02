@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Html;
+namespace Akh\Typograf\Rule\Html;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class Paragraph extends AbstractRule
 {

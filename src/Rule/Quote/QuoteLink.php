@@ -1,8 +1,8 @@
 <?php
 
-namespace akh\Typograf\Rule\Quote;
+namespace Akh\Typograf\Rule\Quote;
 
-use akh\Typograf\Rule\AbstractRule;
+use Akh\Typograf\Rule\AbstractRule;
 
 class QuoteLink extends AbstractRule
 {

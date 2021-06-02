@@ -2,7 +2,7 @@
 
 namespace Rule\Space;
 
-use akh\Typograf\Rule\Space\AfterDot;
+use Akh\Typograf\Rule\Space\AfterDot;
 use PHPUnit\Framework\TestCase;
 
 class AfterDotTest extends TestCase
