@@ -6,9 +6,7 @@ use Akh\Typograf\Rule\AbstractRule;
 
 class Math extends AbstractRule
 {
-    public $name = 'Математические знаки больше, меньше, плюс, равно';
-
-    public $active = false;
+    public $name = 'Математические знаки больше, меньше, плюс, равно, умножить';
 
     public function handler($text)
     {
@@ -21,6 +19,7 @@ class Math extends AbstractRule
             '#<<#iu',
             '#>>#iu',
             '#(\d)-(\d)#iu',
+            '#(\d)(\s|&nbsp;)*[xх](\s|&nbsp;)*(\d)#iu',
         ];
 
         $replace = [
@@ -32,8 +31,7 @@ class Math extends AbstractRule
             '&Lt;',
             '&Gt;',
             '$1&minus;$2',
-            '$1→',
-            '$1←'
+            '$1&times;$4',
         ];
 
         return preg_replace($pattern, $replace, $text);

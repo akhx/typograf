@@ -11,6 +11,11 @@ class MathTest extends TestCase
     public function testHandler()
     {
         $arTests = [
+            //ru
+            ['2х2', '2&times;2'],
+            //en
+            ['2x2', '2&times;2'],
+            ['2 x 2', '2&times;2'],
             ['4 <= 2', '4 &le; 2'],
             ['1 != 0', '1 &ne; 0'],
             ['5 >= 3', '5 &ge; 3'],
