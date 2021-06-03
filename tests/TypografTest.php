@@ -36,6 +36,11 @@ class TypografTest extends TestCase
     public function testApply()
     {
         $arTests = [
+            // ожидает включения правила телефонов
+            /*[
+                "+7 926 999 9999",
+                "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
+            ],*/
             [
                 'Опа!??',
                 'Опа?!'
