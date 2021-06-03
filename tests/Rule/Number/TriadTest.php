@@ -12,6 +12,10 @@ class TriadTest extends TestCase
     {
         $arTests = [
             [
+                "1000\n10000",
+                "1000\n10&thinsp;000",
+            ],
+            [
                 "+79269999999",
                 "+79269999999",
             ],

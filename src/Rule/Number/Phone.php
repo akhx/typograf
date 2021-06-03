@@ -17,7 +17,7 @@ class Phone extends AbstractRule
     public function handler($text)
     {
         return preg_replace_callback(
-            '#(^|,| |>)(\+7[\d() -]{10,18})#iu',
+            '#(^|,| |>)(\+7[\d() -]{10,18})#m',
             function ($matches) {
                 $clear = preg_replace('#[^0-9]#m', '', $matches[2]);
                 if (strlen($clear) === 11) {

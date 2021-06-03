@@ -16,6 +16,10 @@ class PhoneTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],
             [
+                "10\n+79269999999",
+                "10\n+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
+            ],
+            [
                 "мой номер +79269999999",
                 "мой номер +7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],

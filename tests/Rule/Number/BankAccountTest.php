@@ -16,6 +16,10 @@ class BankAccountTest extends TestCase
                 "11122&thinsp;333&thinsp;4&thinsp;5555&thinsp;6666666",
             ],
             [
+                "100\n11122333455556666666",
+                "100\n11122&thinsp;333&thinsp;4&thinsp;5555&thinsp;6666666",
+            ],
+            [
                 "111223334555566666667",
                 "111223334555566666667",
             ],
