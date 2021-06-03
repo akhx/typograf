@@ -51,3 +51,4 @@ $t->disableRule('*');
 ## Вдохновление черпается из
 + [Типограф на js](https://github.com/typograf/typograf)
 + [Типограф Муравьева](https://github.com/emuravjev/mdash)
++ [§ 62. Экранная типографика](https://www.artlebedev.ru/kovodstvo/sections/62/)
