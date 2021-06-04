@@ -1,5 +1,9 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.3.0...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.3.1...HEAD)
+## [0.3.1](https://github.com/akhx/typograf/compare/v0.3.0...v0.3.1) - 2021-06-02
+### Исправлено
+- Срабатывание правил в конструкциях с переносом строки и обрамлением тегами
+
 ## [0.3.0](https://github.com/akhx/typograf/compare/v0.2.0...v0.3.0) - 2021-06-03
 ### Добавлено
 - Правило разбиение числа на триады
