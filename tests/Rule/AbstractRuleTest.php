@@ -64,7 +64,6 @@ class AbstractRuleTest extends TestCase
             ]
         ];
 
-        $arRes = [];
         foreach ($arTests as $setting) {
             $stub->setSetting($setting[0], $setting[1]);
             $arSettings = $stub->getSettings();

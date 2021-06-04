@@ -26,9 +26,9 @@ class Phone extends AbstractRule
                             $this->settings['tpl'],
                             $clear
                         );
-                } else {
-                    return $matches[1] . $matches[2];
                 }
+
+                return $matches[1] . $matches[2];
             },
             $text
         );

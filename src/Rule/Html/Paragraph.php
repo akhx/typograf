@@ -36,9 +36,9 @@ class Paragraph extends AbstractRule
             }
 
             return $newText;
-        } else {
-            return $this->addParagraph($text);
         }
+
+        return $this->addParagraph($text);
     }
 
     protected function addParagraph($text): string

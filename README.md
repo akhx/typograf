@@ -5,9 +5,9 @@
 Типографирование текста на&nbsp;php, помогает расставить неразрывные пробелы, правильные кавычки и&nbsp;исправить мелкие опечатки.
 
 ## Содержание
--  [Установка](#Установка)
--  [Использование](#Использование)
--  [Правила](docs/RULES.md)
+* [Установка](#Установка)
+* [Использование](#Использование)
+* [Правила](docs/RULES.md)
 
 ### Установка
 
@@ -49,6 +49,6 @@ $t->disableRule('*');
 ```
 
 ## Вдохновление черпается из
--  [Типограф на js](https://github.com/typograf/typograf)
--  [Типограф Муравьева](https://github.com/emuravjev/mdash)
--  [§ 62. Экранная типографика](https://www.artlebedev.ru/kovodstvo/sections/62/)
+* [Типограф на js](https://github.com/typograf/typograf)
+* [Типограф Муравьева](https://github.com/emuravjev/mdash)
+* [§ 62. Экранная типографика](https://www.artlebedev.ru/kovodstvo/sections/62/)
