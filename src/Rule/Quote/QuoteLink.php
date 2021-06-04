@@ -10,7 +10,8 @@ class QuoteLink extends AbstractRule
 
     public function handler($text)
     {
-        $pattern = '#(<a[^>]+>)([' . $this->char['allQuote'] . '])(.+?)([' . $this->char['allQuote'] . '])(</a>)#iu';
+        $pattern = '#(<a[^>]+>)([' . $this->char['allQuote'] . '])([\s\S]*?)([' . $this->char['allQuote'] . '])(</a>)#iu';
+
         $replace = '$2$1$3$5$4';
 
         return preg_replace($pattern, $replace, $text);

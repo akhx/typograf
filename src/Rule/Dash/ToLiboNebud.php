@@ -35,7 +35,7 @@ class ToLiboNebud extends AbstractRule
         ];
 
         $group = implode('|', $words);
-        $pattern = '#(' . $group . ')-?(\s|&nbsp;)-?(то|либо|нибудь)([' . $this->char['charEnd'] . ']|\s|&nbsp;|$)#iu';
+        $pattern = '#(' . $group . ')-?(\s|&nbsp;)-?(то|либо|нибудь)([' . $this->char['charEnd'] . ']|\s|<|&nbsp;|$)#iu';
 
         return preg_replace_callback(
             $pattern,

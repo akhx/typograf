@@ -12,7 +12,18 @@ class MathTest extends TestCase
     {
         $arTests = [
             //ru
-            ['2х2', '2&times;2'],
+            [
+                "2х2",
+                "2&times;2"
+            ],
+            [
+                "2х2\n2х2",
+                "2&times;2\n2&times;2"
+            ],
+            [
+                "<p>2х2</p>",
+                "<p>2&times;2</p>"
+            ],
             //en
             ['2x2', '2&times;2'],
             ['2 x 2', '2&times;2'],

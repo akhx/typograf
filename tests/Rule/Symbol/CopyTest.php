@@ -11,6 +11,14 @@ class CopyTest extends TestCase
     public function testHandler()
     {
         $arTests = [
+            [
+                "<p>(c)</p>",
+                "<p>&copy;</p>"
+            ],
+            [
+                "(c)\n(c)",
+                "&copy;\n&copy;"
+            ],
             ['(c)', '&copy;'],
             ['(с)', '&copy;'],
             ['Copyright (с)', '&copy;'],

@@ -11,7 +11,18 @@ class BeforeParticleTest extends TestCase
     public function testHandler()
     {
         $arTests = [
-            ['Может ли?', 'Может&nbsp;ли?'],
+            [
+                "Может ли?",
+                "Может&nbsp;ли?"
+            ],
+            [
+                "Может ли?\nМожет ли?",
+                "Может&nbsp;ли?\nМожет&nbsp;ли?"
+            ],
+            [
+                "<p>Может ли?</p>",
+                "<p>Может&nbsp;ли?</p>"
+            ],
             ['Может ли&nbsp;быть?', 'Может&nbsp;ли быть?'],
             ['Может же быть?', 'Может&nbsp;же быть?']
         ];

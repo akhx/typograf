@@ -16,6 +16,14 @@ class AfterNumberTest extends TestCase
                 ' 123&nbsp;дня '
             ],
             [
+                "123 дня\n123 дня",
+                "123&nbsp;дня\n123&nbsp;дня"
+            ],
+            [
+                "<p>123 дня</p>",
+                "<p>123&nbsp;дня</p>"
+            ],
+            [
                 '2 кошки',
                 '2&nbsp;кошки'
             ],

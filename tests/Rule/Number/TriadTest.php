@@ -16,6 +16,10 @@ class TriadTest extends TestCase
                 "1000\n10&thinsp;000",
             ],
             [
+                "<p>10000</p>",
+                "<p>10&thinsp;000</p>",
+            ],
+            [
                 "+79269999999",
                 "+79269999999",
             ],

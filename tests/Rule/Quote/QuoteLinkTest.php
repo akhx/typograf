@@ -16,8 +16,8 @@ class QuoteLinkTest extends TestCase
                 'test "<a href="/">Название</a>" test'
             ],
             [
-                '<a href="/">«Название»</a>\n<a\nhref="/">«Название\n2»</a>',
-                '«<a href="/">Название</a>»\n«<a\nhref="/">Название\n2</a>»'
+                "<a href=\"/\">«Название»</a>\n<a\nhref=\"/\">«Название\n2»</a>",
+                "«<a href=\"/\">Название</a>»\n«<a\nhref=\"/\">Название\n2</a>»"
             ],
         ];
 

@@ -11,7 +11,18 @@ class DimensionSupTest extends TestCase
     public function testHandler()
     {
         $arTests = [
-            ['2cm2', '2cm<sup>2</sup>'],
+            [
+                "2cm2",
+                "2cm<sup>2</sup>"
+            ],
+            [
+                "2cm2\n2cm2",
+                "2cm<sup>2</sup>\n2cm<sup>2</sup>"
+            ],
+            [
+                "<p>2cm2</p>",
+                "<p>2cm<sup>2</sup></p>"
+            ],
             ['2см2', '2см<sup>2</sup>'],
             [
                 'площадь помещения 24м2',
