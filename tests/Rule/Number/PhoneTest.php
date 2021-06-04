@@ -12,6 +12,10 @@ class PhoneTest extends TestCase
     {
         $arTests = [
             [
+                "+792699999991",
+                "+792699999991",
+            ],
+            [
                 "+79269999999",
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],
