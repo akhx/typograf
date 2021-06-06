@@ -11,7 +11,7 @@ class BankAccount extends AbstractRule
     public function handler($text)
     {
         return preg_replace_callback(
-            '#(^| |>|&nbsp;)([0-9]{20})( |<|&nbsp;|$)#m',
+            '#(^| |>|&nbsp;)([0-9]{20})( |<|&nbsp;|$)#mu',
             function ($matches) {
                 $arNum = [];
                 $arNum[] = substr($matches[2], 0, 5);

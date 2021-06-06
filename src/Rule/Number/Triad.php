@@ -13,7 +13,7 @@ class Triad extends AbstractRule
     public function handler($text)
     {
         return preg_replace_callback(
-            '#(^| |>|&nbsp;)([0-9]{5,})( |<|&nbsp;|$)#m',
+            '#(^| |>|&nbsp;)([0-9]{5,})( |<|&nbsp;|$)#mu',
             function ($matches) {
                 $num = str_replace(
                     ' ',
