@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Space;
+namespace Akh\Typograf\Tests\Rule\Space;
 
 use Akh\Typograf\Rule\Space\DelRepeatN;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +12,7 @@ class DelRepeatNTest extends TestCase
     {
         $arTests = [
             [
-                "asdk oasdk\nas\n\n\n\nd koa\n\n\nsd       ", 
+                "asdk oasdk\nas\n\n\n\nd koa\n\n\nsd       ",
                 "asdk oasdk\nas\nd koa\nsd       "
             ],
             [

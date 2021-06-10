@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Nbsp;
+namespace Akh\Typograf\Tests\Rule\Nbsp;
 
 use Akh\Typograf\Rule\Nbsp\DayMonth;
 use PHPUnit\Framework\TestCase;

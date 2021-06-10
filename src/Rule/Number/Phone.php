@@ -22,10 +22,10 @@ class Phone extends AbstractRule
                 $clear = preg_replace('#[^0-9]#mu', '', $matches[2]);
                 if (strlen($clear) === 11) {
                     return $matches[1] . preg_replace(
-                            '#^(7)([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})$#',
-                            $this->settings['tpl'],
-                            $clear
-                        );
+                        '#^(7)([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})$#',
+                        $this->settings['tpl'],
+                        $clear
+                    );
                 }
 
                 return $matches[1] . $matches[2];

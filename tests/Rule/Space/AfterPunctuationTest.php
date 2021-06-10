@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Space;
+namespace Akh\Typograf\Tests\Rule\Space;
 
 use Akh\Typograf\Rule\Space\AfterPunctuation;
 use PHPUnit\Framework\TestCase;

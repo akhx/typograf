@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Number;
+namespace Akh\Typograf\Tests\Rule\Number;
 
 use Akh\Typograf\Rule\Number\Fraction;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Nbsp;
+namespace Akh\Typograf\Tests\Rule\Nbsp;
 
 use Akh\Typograf\Rule\Nbsp\AfterNumber;
 use PHPUnit\Framework\TestCase;
@@ -42,7 +42,7 @@ class AfterNumberTest extends TestCase
         ];
 
         foreach ($arTests as $arTest) {
-            $test = (new AfterNumber)->Handler($arTest[0]);
+            $test = (new AfterNumber())->Handler($arTest[0]);
             $this->assertSame($test, $arTest[1]);
         }
     }

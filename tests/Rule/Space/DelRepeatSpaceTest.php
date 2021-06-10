@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Space;
+namespace Akh\Typograf\Tests\Rule\Space;
 
 use Akh\Typograf\Rule\Space\DelRepeatSpace;
 use PHPUnit\Framework\TestCase;
@@ -20,7 +20,7 @@ class DelRepeatSpaceTest extends TestCase
                 " &nbsp; z "
             ],
             [
-                "  \n  \n  Hello   world  !  \n  \n  ", 
+                "  \n  \n  Hello   world  !  \n  \n  ",
                 " \n \n Hello world ! \n \n "
             ]
         ];

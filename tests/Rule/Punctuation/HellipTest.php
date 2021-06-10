@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Punctuation;
+namespace Akh\Typograf\Tests\Rule\Punctuation;
 
 use Akh\Typograf\Rule\Punctuation\Hellip;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Dash;
+namespace Akh\Typograf\Tests\Rule\Dash;
 
 use Akh\Typograf\Rule\Dash\IzZaPod;
 use PHPUnit\Framework\TestCase;

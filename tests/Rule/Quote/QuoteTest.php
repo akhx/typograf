@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Quote;
+namespace Akh\Typograf\Tests\Rule\Quote;
 
 use Akh\Typograf\Rule\Quote\Quote;
 use PHPUnit\Framework\TestCase;

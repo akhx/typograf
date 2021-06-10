@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Space;
+namespace Akh\Typograf\Tests\Rule\Space;
 
 use Akh\Typograf\Rule\Space\DelBeforePercent;
 use PHPUnit\Framework\TestCase;

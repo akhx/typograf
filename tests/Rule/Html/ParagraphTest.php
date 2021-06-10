@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Html;
+namespace Akh\Typograf\Tests\Rule\Html;
 
 use Akh\Typograf\Rule\Html\Paragraph;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +38,7 @@ class ParagraphTest extends TestCase
         ];
 
         foreach ($arTests as $arTest) {
-            $test = (new Paragraph)->Handler($arTest[0]);
+            $test = (new Paragraph())->Handler($arTest[0]);
             $this->assertSame($test, $arTest[1]);
         }
     }

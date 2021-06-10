@@ -1,5 +1,6 @@
 <?php
 
+namespace Akh\Typograf\Tests;
 
 use Akh\Typograf\Typograf;
 use PHPUnit\Framework\TestCase;
@@ -10,7 +11,6 @@ class TypografTest extends TestCase
     {
         $typo = new Typograf();
         $typo->enableRule('Nbsp\ReplaceNbsp');
-
         foreach ($typo->getRules() as $ruleName => $rule) {
             if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
                 $this->assertSame($rule->getActive(), true);
@@ -23,7 +23,6 @@ class TypografTest extends TestCase
         $typo = new Typograf();
         $typo->disableRule('*');
         $typo->enableRule('Nbsp\ReplaceNbsp');
-
         foreach ($typo->getRules() as $ruleName => $rule) {
             if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
                 $this->assertSame($rule->getActive(), true);
@@ -82,7 +81,6 @@ class TypografTest extends TestCase
                 'ОАО «Пример»'
             ]
         ];
-
         foreach ($arTests as $arTest) {
             $typo = new Typograf();
             $test = $typo->apply($arTest[0]);
@@ -167,7 +165,6 @@ class TypografTest extends TestCase
             </body>
             </html>
             ';
-
         $typo = new Typograf();
         $typo->disableRule('Rule\Space\*');
         $test = $typo->apply($content);

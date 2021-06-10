@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule;
+namespace Akh\Typograf\Tests\Rule;
 
 use Akh\Typograf\Rule\AbstractRule;
 use PHPUnit\Framework\TestCase;

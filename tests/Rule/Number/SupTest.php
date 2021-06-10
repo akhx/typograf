@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Number;
+namespace Akh\Typograf\Tests\Rule\Number;
 
 use Akh\Typograf\Rule\Number\Sup;
 use PHPUnit\Framework\TestCase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Symbol;
+namespace Akh\Typograf\Tests\Rule\Symbol;
 
 use Akh\Typograf\Rule\Symbol\Math;
 use PHPUnit\Framework\TestCase;

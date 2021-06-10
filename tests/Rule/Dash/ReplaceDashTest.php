@@ -1,6 +1,6 @@
 <?php
 
-namespace Rule\Dash;
+namespace Akh\Typograf\Tests\Rule\Dash;
 
 use Akh\Typograf\Rule\Dash\ReplaceDash;
 use PHPUnit\Framework\TestCase;
