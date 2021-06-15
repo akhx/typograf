@@ -2,6 +2,8 @@
 
 namespace Akh\Typograf;
 
+use Akh\Typograf\Rule\AbstractRule;
+
 class Typograf
 {
     protected $rules = [];
@@ -26,12 +28,25 @@ class Typograf
             $this->rules[$ruleClass] = new $ruleClass();
         }
 
+        $this->sortRule();
+    }
+
+    protected function sortRule()
+    {
         uasort(
             $this->rules,
             function ($a, $b) {
                 return $a->getSort() <=> $b->getSort();
             }
         );
+    }
+
+    public function addRule($ruleClass)
+    {
+        if (is_subclass_of($ruleClass, 'Akh\Typograf\Rule\AbstractRule') === true) {
+            $this->rules[spl_object_hash($ruleClass)] = $ruleClass;
+            $this->sortRule();
+        }
     }
 
     public function apply($text)
@@ -82,11 +97,6 @@ class Typograf
         $this->changeRule($name, true);
     }
 
-    public function disableRule($name)
-    {
-        $this->changeRule($name, false);
-    }
-
     final protected function changeRule($name, bool $active)
     {
         if ($name === '*') {
@@ -102,6 +112,11 @@ class Typograf
                 }
             }
         }
+    }
+
+    public function disableRule($name)
+    {
+        $this->changeRule($name, false);
     }
 
     public function getRules(): array
