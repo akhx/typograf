@@ -43,7 +43,13 @@ jobs:
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=clover.xml
 
-      - name: Upload code coverage
+      - name: Upload codecov coverage reporter
         uses: codecov/codecov-action@v1
         with:
           file: clover.xml
+          
+      - name: Upload codacy coverage reporter
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: clover.xml
