@@ -21,7 +21,7 @@ class Typograf
 
     protected function initRules()
     {
-        $all = RuleFinder::getAllRule();
+        $all = (new RuleFinder())->getAllRule();
         foreach ($all as $ruleClass) {
             $this->rules[$ruleClass] = new $ruleClass();
         }

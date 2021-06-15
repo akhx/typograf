@@ -6,7 +6,7 @@ class SafeBlock
 {
     protected $safeBlocks = [];
 
-    private $defaultSafeTags = [
+    protected $defaultSafeTags = [
         'head',
         'pre',
         'code',
@@ -14,7 +14,7 @@ class SafeBlock
         'style'
     ];
 
-    private $defaultSafeRegexp = [
+    protected $defaultSafeRegexp = [
         '/<!--(.+?)-->/ius',
         '/<span class=["\']no-typo["\']>(.+?)<\/span>/ius',
     ];
@@ -37,10 +37,7 @@ class SafeBlock
 
     public function addTag(string $tag)
     {
-        $res = [
-            'id' => $tag
-        ];
-
+        $res = [];
         $res['pattern'] = $this->getPattern(
             [
                 'open' => '<' . preg_quote($tag) . '[^>]*>',
@@ -52,22 +49,21 @@ class SafeBlock
         $this->addBlock($res);
     }
 
-    public function addRegExp($pattern, $id = '')
+    public function addRegExp($pattern)
     {
         $this->addBlock(
             [
-                'id' => $id,
                 'pattern' => $pattern
             ]
         );
     }
 
-    private function addBlock(array $arBlock)
+    protected function addBlock(array $arBlock)
     {
         $this->safeBlocks[] = $arBlock;
     }
 
-    private function getPattern(array $arBlock): string
+    final protected function getPattern(array $arBlock): string
     {
         return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
     }
