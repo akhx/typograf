@@ -18,7 +18,7 @@ composer require akh/typograf
 ### Использование
 
 ```php
-$t = new Akh\Typograf\Typograf();
+$t = new \Akh\Typograf\Typograf();
 $typoText = $t->apply('"Привет, мир!"');
 echo $typoText; //«Привет, мир!»
 ```
@@ -26,7 +26,7 @@ echo $typoText; //«Привет, мир!»
 #### Включение и выключение правил
 
 ```php
-$t = new Akh\Typograf\Typograf();
+$t = new \Akh\Typograf\Typograf();
 // Включить правило
 $t->enableRule('Nbsp\ReplaceNbsp');
 // Включить все правила в группе 
@@ -46,6 +46,22 @@ $t->disableRule('*');
 Чтобы отключить типографирование для участка текста, его нужно оберунть&nbsp;в 
 ```html
 <span class="no-typo">"Привет"</span>
+```
+
+#### Добавление своего правила
+```php
+$typo = new \Akh\Typograf\Typograf();
+$simpleRule = new class extends \Akh\Typograf\Rule\AbstractRule {
+    public $name = 'Замена названия сайта';
+    protected $sort = 1000;
+    public function handler($text)
+    {
+        return str_replace('old.ru', 'new.ru', $text);
+    }
+};
+
+$typo->addRule($simpleRule);
+$typo->apply('old.ru'); //new.ru
 ```
 
 ## Вдохновление черпается из

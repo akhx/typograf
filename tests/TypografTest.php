@@ -171,6 +171,21 @@ class TypografTest extends TestCase
         $this->assertSame($test, $contentRes);
     }
 
+    public function testAddRule()
+    {
+        $typo = new Typograf();
+        $simpleRule = new class extends \Akh\Typograf\Rule\AbstractRule {
+            public $name = 'Замена названия сайта';
+            protected $sort = -200;
+            public function handler($text)
+            {
+                return str_replace('old.ru', 'new.ru', $text);
+            }
+        };
+        $typo->addRule($simpleRule);
+        $this->assertSame($typo->apply('old.ru'), 'new.ru');
+    }
+
     public function testDebugMode()
     {
         $typo = new Typograf(true);
