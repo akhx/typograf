@@ -171,6 +171,13 @@ class TypografTest extends TestCase
         $this->assertSame($test, $contentRes);
     }
 
+    public function testDebugMode()
+    {
+        $typo = new Typograf(true);
+        $typo->apply('10000');
+        $this->assertSame(count($typo->getDebugInfo()), 1);
+    }
+
     public function testGetSafeBlock()
     {
         $typo = new Typograf();

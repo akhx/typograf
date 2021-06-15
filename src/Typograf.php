@@ -36,29 +36,45 @@ class Typograf
 
     public function apply($text)
     {
-        $text = $this->safeBlock->on($text);
+        $newText = $this->safeBlock->on($text);
 
         foreach ($this->rules as $rule) {
-            if ($rule->getActive() === false) {
-                continue;
-            }
-
             if ($this->debug === true) {
-                $arLog = [
-                    'rule' => $rule,
-                    'startText' => $text
+                $arLogRule = [
+                    'rule' => get_class($rule),
+                    'startText' => $newText
                 ];
             }
 
-            $text = $rule->handler($text);
+            if ($rule->getActive() === false) {
+                if ($this->debug === true) {
+                    $arLogRule['endText'] = $newText;
+                    $arLogRule['status'] = 'skip';
+                    $arLog[] = $arLogRule;
+                }
+                continue;
+            }
+
+            $newText = $rule->handler($newText);
 
             if ($this->debug === true) {
-                $arLog['endText'] = $text;
-                $this->arDebug[] = $arLog;
+                $arLogRule['endText'] = $newText;
+                $arLogRule['status'] = $arLogRule['startText'] !== $arLogRule['endText'] ? 'modify' : 'passed';
+                $arLog[] = $arLogRule;
             }
         }
 
-        return $this->safeBlock->off($text);
+        $newText = $this->safeBlock->off($newText);
+
+        if ($this->debug === true) {
+            $this->arDebug[] = [
+                'start' => $text,
+                'end' => $newText,
+                'trace' => $arLog ?? []
+            ];
+        }
+
+        return $newText;
     }
 
     public function enableRule($name)
@@ -96,5 +112,10 @@ class Typograf
     public function getSafeBlock(): SafeBlock
     {
         return $this->safeBlock;
+    }
+
+    public function getDebugInfo(): array
+    {
+        return $this->arDebug;
     }
 }
