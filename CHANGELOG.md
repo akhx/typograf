@@ -1,5 +1,9 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.0...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.1...HEAD)
+
+## [0.4.1](https://github.com/akhx/typograf/compare/v0.4.0...v0.4.1) - 2021-07-12
+### Исправлено
+*   неразрывной пробел в конце текста (если встречается точка > стр. 1)
 
 ## [0.4.0](https://github.com/akhx/typograf/compare/v0.3.1...v0.4.0) - 2021-06-15
 ### Добавлено

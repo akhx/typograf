@@ -12,6 +12,10 @@ class BeforeShortLastWordTest extends TestCase
     {
         $arTests = [
             [
+                "27 км Новорижского шоссе, влд. 2",
+                "27 км Новорижского шоссе, влд.&nbsp;2"
+            ],
+            [
                 'Fedora, SuSE, Gentoo, Mandrake, or PLD.',
                 'Fedora, SuSE, Gentoo, Mandrake, or&nbsp;PLD.'
             ],
