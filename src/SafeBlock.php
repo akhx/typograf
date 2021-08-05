@@ -101,7 +101,7 @@ class SafeBlock
     public function safeTagAttr($text, $back = false)
     {
         return preg_replace_callback(
-            '/<\w+\s([^>]+)>/ius',
+            '/<[^\/]([^>]+)>/ius',
             function ($matches) use ($back) {
                 switch ($back) {
                     case true:

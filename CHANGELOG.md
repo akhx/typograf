@@ -1,5 +1,9 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.1...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.2...HEAD)
+
+## [0.4.2](https://github.com/akhx/typograf/compare/v0.4.1...v0.4.2) - 2021-08-05
+### Исправлено
+* кодирование(сохранение) тегов
 
 ## [0.4.1](https://github.com/akhx/typograf/compare/v0.4.0...v0.4.1) - 2021-07-12
 ### Исправлено

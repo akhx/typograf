@@ -41,6 +41,10 @@ class TypografTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
             [
+                '<h1 class="test">text</h1>',
+                '<h1 class="test">text</h1>'
+            ],
+            [
                 'Опа!??',
                 'Опа?!'
             ],
