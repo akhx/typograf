@@ -19,7 +19,7 @@ class Math extends AbstractRule
             '#<<#iu',
             '#>>#iu',
             '#(\d)-(\d)#iu',
-            '#(\d)(\s|&nbsp;)*[xх](\s|&nbsp;)*(\d)#iu',
+            '#(\d+)(\s|&nbsp;)*[xх](\s|&nbsp;)*(\d+)([^' . $this->char['char'] . ']|$)#iu',
         ];
 
         $replace = [
@@ -31,7 +31,7 @@ class Math extends AbstractRule
             '&Lt;',
             '&Gt;',
             '$1&minus;$2',
-            '$1&times;$4',
+            '$1&times;$4$5',
         ];
 
         return preg_replace($pattern, $replace, $text);

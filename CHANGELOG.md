@@ -1,5 +1,9 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.2...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.3...HEAD)
+
+## [0.4.3](https://github.com/akhx/typograf/compare/v0.4.2...v0.4.3) - 2021-08-13
+### Исправлено
+* проблема с декодированием, если встречаются конструкция 2X2 (правило замены символа умножения)
 
 ## [0.4.2](https://github.com/akhx/typograf/compare/v0.4.1...v0.4.2) - 2021-08-05
 ### Исправлено
