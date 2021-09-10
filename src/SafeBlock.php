@@ -119,7 +119,11 @@ class SafeBlock
 
     protected function decrypt($text): string
     {
-        return base64_decode($text);
+        if (base64_encode(base64_decode($text, true)) === $text) {
+            return base64_decode($text);
+        }
+
+        return $text;
     }
 
     protected function encrypt($text): string
