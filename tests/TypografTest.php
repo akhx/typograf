@@ -41,6 +41,10 @@ class TypografTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
             [
+                "400+ м2",
+                "400+&nbsp;м<sup>2</sup>"
+            ],
+            [
               '<a href="https://www.comet-a.ru/fara_dyuza_te_1_4_c_8_x_15_1_g.html">1</a>',
               '<a href="https://www.comet-a.ru/fara_dyuza_te_1_4_c_8_x_15_1_g.html">1</a>'
             ],
