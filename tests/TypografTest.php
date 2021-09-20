@@ -41,6 +41,10 @@ class TypografTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
             [
+                "file <code>result_modifier.php</code>",
+                "file <code>result_modifier.php</code>"
+            ],
+            [
                 "400+ м2",
                 "400+&nbsp;м<sup>2</sup>"
             ],

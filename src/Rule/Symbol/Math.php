@@ -19,7 +19,7 @@ class Math extends AbstractRule
             '#<<#iu',
             '#>>#iu',
             '#(\d)-(\d)#iu',
-            '#(\d+)(\s|&nbsp;)*[xх](\s|&nbsp;)*(\d+)([^' . $this->char['char'] . ']|$)#iu',
+            '#(\d+)(\s|&nbsp;)*[xх](\s|&nbsp;)*(\d+)(?!\d*[' . $this->char['char'] . '])#iu',
         ];
 
         $replace = [
