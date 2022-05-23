@@ -20,7 +20,7 @@ class DelDouble extends AbstractRule
             '#([!]){' . ($this->settings['maxLenMark'] + 1) . ',}#iu',
             '#([?]){' . ($this->settings['maxLenMark'] + 1) . ',}#iu',
             '#(^|[^!])!{2}($|[^!])#iu',
-            '#(^|[^?])\?{2}($|[^?])#iu'
+            '#(^|[^?])\?{2}($|[^?])#iu',
         ];
 
         $replace = [

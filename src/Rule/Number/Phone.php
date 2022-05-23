@@ -11,7 +11,7 @@ class Phone extends AbstractRule
     public $active = false;
 
     public $settings = [
-        'tpl' => '+$1&thinsp;$2&thinsp;$3&ndash;$4&ndash;$5'
+        'tpl' => '+$1&thinsp;$2&thinsp;$3&ndash;$4&ndash;$5',
     ];
 
     public function handler($text)
@@ -20,7 +20,7 @@ class Phone extends AbstractRule
             '#(^|,| |>)(\+7[\d() -]{10,18})#mu',
             function ($matches) {
                 $clear = preg_replace('#[^0-9]#mu', '', $matches[2]);
-                if (strlen($clear) === 11) {
+                if (11 === strlen($clear)) {
                     return $matches[1] . preg_replace(
                         '#^(7)([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})$#',
                         $this->settings['tpl'],

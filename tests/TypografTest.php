@@ -5,6 +5,9 @@ namespace Akh\Typograf\Tests;
 use Akh\Typograf\Typograf;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class TypografTest extends TestCase
 {
     public function testEnableRule()
@@ -12,7 +15,7 @@ class TypografTest extends TestCase
         $typo = new Typograf();
         $typo->enableRule('Nbsp\ReplaceNbsp');
         foreach ($typo->getRules() as $ruleName => $rule) {
-            if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
+            if ('Akh\Typograf\Rule\Nbsp\ReplaceNbsp' === $ruleName) {
                 $this->assertSame($rule->getActive(), true);
             }
         }
@@ -24,7 +27,7 @@ class TypografTest extends TestCase
         $typo->disableRule('*');
         $typo->enableRule('Nbsp\ReplaceNbsp');
         foreach ($typo->getRules() as $ruleName => $rule) {
-            if ($ruleName === 'Akh\Typograf\Rule\Nbsp\ReplaceNbsp') {
+            if ('Akh\Typograf\Rule\Nbsp\ReplaceNbsp' === $ruleName) {
                 $this->assertSame($rule->getActive(), true);
             } else {
                 $this->assertSame($rule->getActive(), false);
@@ -41,61 +44,57 @@ class TypografTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
             [
-                "file <code>result_modifier.php</code>",
-                "file <code>result_modifier.php</code>"
+                'file <code>result_modifier.php</code>',
+                'file <code>result_modifier.php</code>',
             ],
             [
-                "400+ м2",
-                "400+&nbsp;м<sup>2</sup>"
-            ],
-            [
-              '<a href="https://www.comet-a.ru/fara_dyuza_te_1_4_c_8_x_15_1_g.html">1</a>',
-              '<a href="https://www.comet-a.ru/fara_dyuza_te_1_4_c_8_x_15_1_g.html">1</a>'
+                '400+ м2',
+                '400+&nbsp;м<sup>2</sup>',
             ],
             [
                 '<h1 class="test">text</h1>',
-                '<h1 class="test">text</h1>'
+                '<h1 class="test">text</h1>',
             ],
             [
                 'Опа!??',
-                'Опа?!'
+                'Опа?!',
             ],
             [
                 'ого......',
-                'ого&hellip;'
+                'ого&hellip;',
             ],
             [
                 '1 и 4 литра',
-                '1&nbsp;и&nbsp;4&nbsp;литра'
+                '1&nbsp;и&nbsp;4&nbsp;литра',
             ],
             [
                 'В неполном предложении отсутствует один или несколько членов , значение которых понятно из контекста или из ситуации.',
-                'В&nbsp;неполном предложении отсутствует один или несколько членов, значение которых понятно из&nbsp;контекста или из&nbsp;ситуации.'
+                'В&nbsp;неполном предложении отсутствует один или несколько членов, значение которых понятно из&nbsp;контекста или из&nbsp;ситуации.',
             ],
             [
                 'Может ли&nbsp;быть?',
-                'Может&nbsp;ли быть?'
+                'Может&nbsp;ли быть?',
             ],
             [
                 'специально для "клапана на 3/4" или 1/2" (наружная резьба)" нужно дополнительно',
-                'специально для «клапана на&nbsp;3/4″ или 1/2″ (наружная резьба)» нужно дополнительно'
+                'специально для «клапана на&nbsp;3/4″ или 1/2″ (наружная резьба)» нужно дополнительно',
             ],
             [
                 'Вот у вас "Мой спутник, "это "не "сочинение" это" хорошо, потому" это хорошо, потому что не выдумано."',
-                'Вот у&nbsp;вас «Мой спутник, «это «не&nbsp;«сочинение» это» хорошо, потому» это хорошо, потому что не&nbsp;выдумано.»'
+                'Вот у&nbsp;вас «Мой спутник, «это «не&nbsp;«сочинение» это» хорошо, потому» это хорошо, потому что не&nbsp;выдумано.»',
             ],
             [
                 '««Цыганы» мои не продаются вовсе»',
-                '«„Цыганы“ мои не&nbsp;продаются вовсе»'
+                '«„Цыганы“ мои не&nbsp;продаются вовсе»',
             ],
             [
                 '"Пример"',
-                '«Пример»'
+                '«Пример»',
             ],
             [
                 'ОАО "Пример"',
-                'ОАО «Пример»'
-            ]
+                'ОАО «Пример»',
+            ],
         ];
         foreach ($arTests as $arTest) {
             $typo = new Typograf();
@@ -190,9 +189,10 @@ class TypografTest extends TestCase
     public function testAddRule()
     {
         $typo = new Typograf();
-        $simpleRule = new class extends \Akh\Typograf\Rule\AbstractRule {
+        $simpleRule = new class() extends \Akh\Typograf\Rule\AbstractRule {
             public $name = 'Замена названия сайта';
             protected $sort = -200;
+
             public function handler($text)
             {
                 return str_replace('old.ru', 'new.ru', $text);

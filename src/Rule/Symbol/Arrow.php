@@ -14,14 +14,14 @@ class Arrow extends AbstractRule
             '#<<#iu',
             '#>>#iu',
             '#(^|[^-])->(?!>)#iu',
-            '#(^|[^<])<-(?!-)#iu'
+            '#(^|[^<])<-(?!-)#iu',
         ];
 
         $replace = [
             '&Lt;',
             '&Gt;',
             '$1&rarr;',
-            '$1&larr;'
+            '$1&larr;',
         ];
 
         return preg_replace($pattern, $replace, $text);

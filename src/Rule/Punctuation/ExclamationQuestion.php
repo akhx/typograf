@@ -12,7 +12,6 @@ class ExclamationQuestion extends AbstractRule
 
     public function handler($text)
     {
-
         $pattern = '#([' . $this->char['char'] . '])!\?(\s|$|<)#iu';
 
         $replace = '$1?!$2';

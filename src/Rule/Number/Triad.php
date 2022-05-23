@@ -20,6 +20,7 @@ class Triad extends AbstractRule
                     '&thinsp;',
                     number_format($matches[2], 0, '', ' ')
                 );
+
                 return $matches[1] . $num . $matches[3];
             },
             $text

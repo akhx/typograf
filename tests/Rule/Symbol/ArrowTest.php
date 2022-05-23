@@ -5,19 +5,21 @@ namespace Akh\Typograf\Tests\Rule\Symbol;
 use Akh\Typograf\Rule\Symbol\Arrow;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class ArrowTest extends TestCase
 {
-
     public function testHandler()
     {
         $arTests = [
             [
                 "<-\n<-",
-                "&larr;\n&larr;"
+                "&larr;\n&larr;",
             ],
             [
-                "<p><-</p>",
-                "<p>&larr;</p>"
+                '<p><-</p>',
+                '<p>&larr;</p>',
             ],
             ['10000000 >> 1', '10000000 &Gt; 1'],
             ['1 << 10000000', '1 &Lt; 10000000'],

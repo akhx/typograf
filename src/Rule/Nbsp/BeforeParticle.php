@@ -18,7 +18,7 @@ class BeforeParticle extends AbstractRule
         return preg_replace_callback(
             $pattern,
             function ($matches) {
-                return $matches[1] . $this->char['nbsp'] . $matches[2] . ($matches[3] === '&nbsp;' ? ' ' : $matches[3]);
+                return $matches[1] . $this->char['nbsp'] . $matches[2] . ('&nbsp;' === $matches[3] ? ' ' : $matches[3]);
             },
             $text
         );

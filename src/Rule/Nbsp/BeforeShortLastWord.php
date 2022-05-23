@@ -16,7 +16,7 @@ class BeforeShortLastWord extends AbstractRule
     {
         $pattern = [
             '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '}[.!?…])(\s[' . $this->char['char'] . ']|<|$)#iu',
-            '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '})($|<)#iu'
+            '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '})($|<)#iu',
         ];
 
         $replace = [

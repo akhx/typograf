@@ -5,24 +5,26 @@ namespace Akh\Typograf\Tests\Rule\Space;
 use Akh\Typograf\Rule\Space\DelRepeatSpace;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class DelRepeatSpaceTest extends TestCase
 {
-
     public function testHandler()
     {
         $arTests = [
             [
                 "     a   \t   ",
-                " a "
+                ' a ',
             ],
             [
                 "  &nbsp;   z   \t   ",
-                " &nbsp; z "
+                ' &nbsp; z ',
             ],
             [
                 "  \n  \n  Hello   world  !  \n  \n  ",
-                " \n \n Hello world ! \n \n "
-            ]
+                " \n \n Hello world ! \n \n ",
+            ],
         ];
 
         foreach ($arTests as $arTest) {

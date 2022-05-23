@@ -14,7 +14,7 @@ class DelRepeatSpace extends AbstractRule
     {
         $pattern = '#[ \t]{2,}#u';
 
-        $replace = " ";
+        $replace = ' ';
 
         return preg_replace($pattern, $replace, $text);
     }

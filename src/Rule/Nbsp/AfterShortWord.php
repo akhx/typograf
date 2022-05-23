@@ -22,6 +22,7 @@ class AfterShortWord extends AbstractRule
          * Преобразовение вызывается 2 раза
          */
         $text = preg_replace($pattern, $replace, $text);
+
         return preg_replace($pattern, $replace, $text);
     }
 }

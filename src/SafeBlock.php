@@ -11,7 +11,7 @@ class SafeBlock
         'pre',
         'code',
         'script',
-        'style'
+        'style',
     ];
 
     protected $defaultSafeRegexp = [
@@ -42,7 +42,7 @@ class SafeBlock
             [
                 'open' => '<' . preg_quote($tag) . '[^>]*>',
                 'close' => '<\/' . preg_quote($tag) . '>',
-                'tag' => $tag
+                'tag' => $tag,
             ]
         );
 
@@ -53,30 +53,21 @@ class SafeBlock
     {
         $this->addBlock(
             [
-                'pattern' => $pattern
+                'pattern' => $pattern,
             ]
         );
-    }
-
-    protected function addBlock(array $arBlock)
-    {
-        $this->safeBlocks[] = $arBlock;
-    }
-
-    final protected function getPattern(array $arBlock): string
-    {
-        return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
     }
 
     public function on($text)
     {
         $text = $this->safeBlockContent($text);
+
         return $this->safeTagAttr($text);
     }
 
     public function safeBlockContent($text, $back = false)
     {
-        $blocks = $back === false ? $this->safeBlocks : array_reverse($this->safeBlocks);
+        $blocks = false === $back ? $this->safeBlocks : array_reverse($this->safeBlocks);
         foreach ($blocks as $block) {
             $text = preg_replace_callback(
                 $block['pattern'],
@@ -84,7 +75,9 @@ class SafeBlock
                     switch ($back) {
                         case true:
                             $safeContent = $this->decrypt($matches[1]);
+
                             break;
+
                         default:
                             $safeContent = $this->encrypt($matches[1]);
                     }
@@ -106,7 +99,9 @@ class SafeBlock
                 switch ($back) {
                     case true:
                         $safeContent = $this->decrypt($matches[1]);
+
                         break;
+
                     default:
                         $safeContent = $this->encrypt($matches[1]);
                 }
@@ -115,6 +110,28 @@ class SafeBlock
             },
             $text
         );
+    }
+
+    public function off($text)
+    {
+        $text = $this->safeTagAttr($text, true);
+
+        return $this->safeBlockContent($text, true);
+    }
+
+    public function getBlocks(): array
+    {
+        return $this->safeBlocks;
+    }
+
+    protected function addBlock(array $arBlock)
+    {
+        $this->safeBlocks[] = $arBlock;
+    }
+
+    final protected function getPattern(array $arBlock): string
+    {
+        return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
     }
 
     protected function decrypt($text): string
@@ -129,16 +146,5 @@ class SafeBlock
     protected function encrypt($text): string
     {
         return base64_encode($text);
-    }
-
-    public function off($text)
-    {
-        $text = $this->safeTagAttr($text, true);
-        return $this->safeBlockContent($text, true);
-    }
-
-    public function getBlocks(): array
-    {
-        return $this->safeBlocks;
     }
 }

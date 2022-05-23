@@ -19,7 +19,7 @@ class AfterHellip extends AbstractRule
 
         $replace = [
             '$1$2 $3',
-            '$1 $2'
+            '$1 $2',
         ];
 
         return preg_replace($pattern, $replace, $text);

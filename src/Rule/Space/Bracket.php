@@ -17,7 +17,7 @@ class Bracket extends AbstractRule
 
         $replace = [
             '(',
-            ')'
+            ')',
         ];
 
         return preg_replace($pattern, $replace, $text);

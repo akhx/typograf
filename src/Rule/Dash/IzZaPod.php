@@ -15,7 +15,7 @@ class IzZaPod extends AbstractRule
         return preg_replace_callback(
             $pattern,
             function ($matches) {
-                return $matches[1] . '-' . $matches[3] . ($matches[4] === '&nbsp;' ? ' ' : $matches[4]);
+                return $matches[1] . '-' . $matches[3] . ('&nbsp;' === $matches[4] ? ' ' : $matches[4]);
             },
             $text
         );

@@ -5,9 +5,11 @@ namespace Akh\Typograf\Tests;
 use Akh\Typograf\SafeBlock;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class SafeBlockTest extends TestCase
 {
-
     public function testRemoveAllBlock()
     {
         $safe = new SafeBlock();

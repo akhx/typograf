@@ -5,26 +5,28 @@ namespace Akh\Typograf\Tests\Rule\Symbol;
 use Akh\Typograf\Rule\Symbol\Math;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class MathTest extends TestCase
 {
-
     public function testHandler()
     {
         $arTests = [
-            //ru
+            // ru
             [
-                "2х2",
-                "2&times;2"
+                '2х2',
+                '2&times;2',
             ],
             [
                 "2х2\n2х2",
-                "2&times;2\n2&times;2"
+                "2&times;2\n2&times;2",
             ],
             [
-                "<p>2х2</p>",
-                "<p>2&times;2</p>"
+                '<p>2х2</p>',
+                '<p>2&times;2</p>',
             ],
-            //en
+            // en
             ['2x2', '2&times;2'],
             ['2 x 2', '2&times;2'],
             ['4 <= 2', '4 &le; 2'],

@@ -5,27 +5,29 @@ namespace Akh\Typograf\Tests\Rule\Space;
 use Akh\Typograf\Rule\Space\DelBeforePercent;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class DelBeforePercentTest extends TestCase
 {
-
     public function testHandler()
     {
         $arTests = [
             [
                 '20 %',
-                '20%'
+                '20%',
             ],
             [
                 '20 ‰',
-                '20‰'
+                '20‰',
             ],
             [
                 '20 ‱',
-                '20‱'
+                '20‱',
             ],
             [
                 'около 4&nbsp;%',
-                'около 4%'
+                'около 4%',
             ],
         ];
 

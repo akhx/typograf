@@ -2,9 +2,11 @@
 
 namespace Akh\Typograf\Tests\Rule;
 
-use Akh\Typograf\Rule\AbstractRule;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class AbstractRuleTest extends TestCase
 {
     public function testSetActive()
@@ -35,7 +37,7 @@ class AbstractRuleTest extends TestCase
             [
                 'len' => '1',
                 'www' => 'www',
-            ]
+            ],
         ];
 
         $arRes = [];
@@ -61,7 +63,7 @@ class AbstractRuleTest extends TestCase
             [
                 'www',
                 true,
-            ]
+            ],
         ];
 
         foreach ($arTests as $setting) {
