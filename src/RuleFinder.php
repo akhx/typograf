@@ -8,8 +8,16 @@ use ReflectionClass;
 
 class RuleFinder
 {
+    /**
+     * @var string[]
+     */
     public static $rules = [];
 
+    /**
+     * @throws \ReflectionException
+     *
+     * @return string[]
+     */
     public static function getAllRule(): array
     {
         if (empty(static::$rules)) {
@@ -24,9 +32,11 @@ class RuleFinder
 
             foreach ($files as $file) {
                 $className = static::getClassNameByFilePath($file->getPathname());
-                $reflectionClass = new ReflectionClass($className);
-                if ($reflectionClass->isSubclassOf($baseClass)) {
-                    static::$rules[] = $className;
+                if (class_exists($className)) {
+                    $reflectionClass = new ReflectionClass($className);
+                    if ($reflectionClass->isSubclassOf($baseClass)) {
+                        static::$rules[] = $className;
+                    }
                 }
             }
         }
@@ -34,7 +44,7 @@ class RuleFinder
         return static::$rules;
     }
 
-    protected static function getClassNameByFilePath($path)
+    protected static function getClassNameByFilePath(string $path): string
     {
         $class = str_replace(
             [__DIR__, '.php'],

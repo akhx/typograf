@@ -10,7 +10,7 @@ class Fraction extends AbstractRule
 
     public $active = false;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#(^|\D)1/([24])(\D|$)#iu',

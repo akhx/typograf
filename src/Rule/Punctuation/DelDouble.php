@@ -12,7 +12,7 @@ class DelDouble extends AbstractRule
         'maxLenMark' => 3,
     ];
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#([,:;]){2,}#iu',

@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SubTest extends TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             ['2_{2} 2_{2}', '2<sub>2</sub> 2<sub>2</sub>'],

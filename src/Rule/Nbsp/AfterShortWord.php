@@ -12,7 +12,7 @@ class AfterShortWord extends AbstractRule
         'len' => 2,
     ];
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $before = '\s(' . $this->char['allQuote'];
         $pattern = '#(^|' . $this->char['nbsp'] . '|[' . $before . '])([' . $this->char['char'] . ']{1,' . $this->settings['len'] . '})\s#iu';

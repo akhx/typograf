@@ -10,7 +10,7 @@ class BeforeParticle extends AbstractRule
 
     public $sort = 510;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $particles = '(ли|ль|же|ж|бы|б)';
         $pattern = '#([' . $this->char['char'] . ']) ' . $particles . '([.,;:?!"‘“»]|\s|&nbsp;)#iu';

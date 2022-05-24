@@ -8,7 +8,7 @@ class KaKas extends AbstractRule
 {
     public $name = 'Расстановка дефисов с частицами ка, кась';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([a-яё]+)(\s|&nbsp;)(ка(сь)?)([' . $this->char['charEnd'] . ']|\s|&nbsp;|$)#iu';
 

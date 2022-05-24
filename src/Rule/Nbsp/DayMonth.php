@@ -8,7 +8,7 @@ class DayMonth extends AbstractRule
 {
     public $name = 'Нераз. пробел между числом и месяцем';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(\d{1,2}) (' . $this->char['monthShort'] . ')#iu';
         $replace = '$1' . $this->char['nbsp'] . '$2';

@@ -8,7 +8,7 @@ class Ordinal extends AbstractRule
 {
     public $name = 'Исправление падежного окночания у чисел';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $map = [
             'ой' => 'й',

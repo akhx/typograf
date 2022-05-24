@@ -8,7 +8,7 @@ class BeforeBracket extends AbstractRule
 {
     public $name = 'Пробел перед открывающей скобкой';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([' . $this->char['char'] . $this->char['charEnd'] . '…)])\(#iu';
 

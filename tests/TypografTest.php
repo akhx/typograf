@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class TypografTest extends TestCase
 {
-    public function testEnableRule()
+    public function testEnableRule(): void
     {
         $typo = new Typograf();
         $typo->enableRule('Nbsp\ReplaceNbsp');
@@ -21,7 +21,7 @@ class TypografTest extends TestCase
         }
     }
 
-    public function testDisableRule()
+    public function testDisableRule(): void
     {
         $typo = new Typograf();
         $typo->disableRule('*');
@@ -35,7 +35,7 @@ class TypografTest extends TestCase
         }
     }
 
-    public function testApply()
+    public function testApply(): void
     {
         $arTests = [
             // ожидает включения правила телефонов
@@ -43,6 +43,10 @@ class TypografTest extends TestCase
                 "+7 926 999 9999",
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
+            [
+                123,
+                '123',
+            ],
             [
                 'file <code>result_modifier.php</code>',
                 'file <code>result_modifier.php</code>',
@@ -103,7 +107,7 @@ class TypografTest extends TestCase
         }
     }
 
-    public function testApplyDocument()
+    public function testApplyDocument(): void
     {
         /**
          * test HTML
@@ -112,6 +116,7 @@ class TypografTest extends TestCase
             <!DOCTYPE html>
             <html lang="ru">
             <head>
+                <title>Вот это тестовая страница</title>
                 <meta name="yandex-verification" content="123"/>
                 <script>
                     console.log("test");
@@ -138,7 +143,7 @@ class TypografTest extends TestCase
                 <style>
                     .class {
                         color: red;
-                        background: url("");
+                        background: url("data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
                     }
                 </style>
             </body>
@@ -148,6 +153,7 @@ class TypografTest extends TestCase
             <!DOCTYPE html>
             <html lang="ru">
             <head>
+                <title>Вот это тестовая страница</title>
                 <meta name="yandex-verification" content="123"/>
                 <script>
                     console.log("test");
@@ -174,7 +180,7 @@ class TypografTest extends TestCase
                 <style>
                     .class {
                         color: red;
-                        background: url("");
+                        background: url("data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==");
                     }
                 </style>
             </body>
@@ -186,14 +192,14 @@ class TypografTest extends TestCase
         $this->assertSame($test, $contentRes);
     }
 
-    public function testAddRule()
+    public function testAddRule(): void
     {
         $typo = new Typograf();
         $simpleRule = new class() extends \Akh\Typograf\Rule\AbstractRule {
             public $name = 'Замена названия сайта';
             protected $sort = -200;
 
-            public function handler($text)
+            public function handler(string $text): string
             {
                 return str_replace('old.ru', 'new.ru', $text);
             }
@@ -202,14 +208,14 @@ class TypografTest extends TestCase
         $this->assertSame($typo->apply('old.ru'), 'new.ru');
     }
 
-    public function testDebugMode()
+    public function testDebugMode(): void
     {
         $typo = new Typograf(true);
         $typo->apply('10000');
         $this->assertSame(count($typo->getDebugInfo()), 1);
     }
 
-    public function testGetSafeBlock()
+    public function testGetSafeBlock(): void
     {
         $typo = new Typograf();
         $class = get_class($typo->getSafeBlock());

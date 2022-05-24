@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class HellipTest extends TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [

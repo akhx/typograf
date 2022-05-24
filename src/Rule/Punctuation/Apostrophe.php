@@ -8,7 +8,7 @@ class Apostrophe extends AbstractRule
 {
     public $name = 'Расстановка правильного апострофа в текстах';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([' . $this->char['char'] . ']+)\'([' . $this->char['char'] . ']+)#iu';
 

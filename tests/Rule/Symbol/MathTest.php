@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MathTest extends TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             // ru

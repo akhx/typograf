@@ -10,7 +10,7 @@ class DelBeforePercent extends AbstractRule
 
     protected $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(\d)(\s|&nbsp;)([%‰‱])#iu';
 

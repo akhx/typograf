@@ -10,7 +10,7 @@ class AfterHellip extends AbstractRule
 
     protected $sort = 800;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#([' . $this->char['char'] . '])(\.\.\.|…)([А-ЯЁ])#u',

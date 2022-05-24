@@ -8,7 +8,7 @@ class Arrow extends AbstractRule
 {
     public $name = 'Стрелочки разные -> → →, <- → ←';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#<<#iu',

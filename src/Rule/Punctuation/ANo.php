@@ -10,7 +10,7 @@ class ANo extends AbstractRule
 
     protected $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([' . $this->char['char'] . '])(\s|&nbsp;)(а|но)(\s|&nbsp;)#iu';
 

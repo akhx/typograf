@@ -9,7 +9,7 @@ class ToLiboNebud extends AbstractRule
     public $name = 'Дефис перед «то», «либо», «нибудь»';
     public $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $words = [
             'откуда',

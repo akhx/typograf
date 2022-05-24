@@ -10,7 +10,7 @@ class Hellip extends AbstractRule
 
     protected $sort = 800;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(\.\.\.)#iu';
 

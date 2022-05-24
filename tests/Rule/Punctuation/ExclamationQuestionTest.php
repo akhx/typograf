@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ExclamationQuestionTest extends TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             ['Опа!???', 'Опа!???'],

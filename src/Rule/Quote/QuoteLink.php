@@ -8,7 +8,7 @@ class QuoteLink extends AbstractRule
 {
     public $name = 'Кавычки вне тэга <a>';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(<a[^>]+>)([' . $this->char['allQuote'] . '])([\s\S]*?)([' . $this->char['allQuote'] . '])(</a>)#iu';
 

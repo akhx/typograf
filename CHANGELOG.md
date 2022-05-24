@@ -1,5 +1,6 @@
 # Changelog
 ## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.5...HEAD)
+* phpStan and cs-fixer
 
 ## [0.4.5](https://github.com/akhx/typograf/compare/v0.4.4...v0.4.5) - 2021-09-20
 ### Исправлено

@@ -14,7 +14,7 @@ class Phone extends AbstractRule
         'tpl' => '+$1&thinsp;$2&thinsp;$3&ndash;$4&ndash;$5',
     ];
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         return preg_replace_callback(
             '#(^|,| |>)(\+7[\d() -]{10,18})#mu',

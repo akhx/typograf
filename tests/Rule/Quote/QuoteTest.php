@@ -10,9 +10,9 @@ use PHPUnit\Framework\TestCase;
  */
 class QuoteTest extends TestCase
 {
-    public function getExtTest(): array
+    public function toDo(): void
     {
-        return [
+        $arTests = [
             [
                 "<p>\"Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. \"</p>",
                 "<p>«Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. »</p>",
@@ -24,7 +24,7 @@ class QuoteTest extends TestCase
         ];
     }
 
-    public function testInchDisabled()
+    public function testInchDisabled(): void
     {
         $arTests = [
             [
@@ -41,7 +41,7 @@ class QuoteTest extends TestCase
         }
     }
 
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [

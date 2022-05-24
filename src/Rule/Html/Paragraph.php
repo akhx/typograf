@@ -12,7 +12,7 @@ class Paragraph extends AbstractRule
 
     protected $sort = 800;
 
-    public function handler($text): string
+    public function handler(string $text): string
     {
         $text = trim($text);
         $first = mb_strpos($text, '<p>');
@@ -41,7 +41,7 @@ class Paragraph extends AbstractRule
         return $this->addParagraph($text);
     }
 
-    protected function addParagraph($text): string
+    protected function addParagraph(string $text): string
     {
         $text = trim($text);
 

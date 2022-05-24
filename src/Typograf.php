@@ -4,12 +4,24 @@ namespace Akh\Typograf;
 
 class Typograf
 {
+    /**
+     * @var Rule\AbstractRule[]
+     */
     protected $rules = [];
 
+    /**
+     * @var bool
+     */
     protected $debug = false;
 
+    /**
+     * @var array<array<array<int, array<string, string>>|string>|string>
+     */
     protected $arDebug = [];
 
+    /**
+     * @var SafeBlock
+     */
     protected $safeBlock;
 
     public function __construct(bool $debug = false)
@@ -19,7 +31,7 @@ class Typograf
         $this->initRules();
     }
 
-    public function addRule($ruleClass)
+    public function addRule(object $ruleClass): void
     {
         if (true === is_subclass_of($ruleClass, 'Akh\Typograf\Rule\AbstractRule')) {
             $this->rules[spl_object_hash($ruleClass)] = $ruleClass;
@@ -27,8 +39,12 @@ class Typograf
         }
     }
 
-    public function apply($text)
+    /**
+     * @param mixed $text
+     */
+    public function apply($text): string
     {
+        $text = (string) $text;
         $newText = $this->safeBlock->on($text);
 
         foreach ($this->rules as $rule) {
@@ -71,16 +87,19 @@ class Typograf
         return $newText;
     }
 
-    public function enableRule($name)
+    public function enableRule(string $name): void
     {
         $this->changeRule($name, true);
     }
 
-    public function disableRule($name)
+    public function disableRule(string $name): void
     {
         $this->changeRule($name, false);
     }
 
+    /**
+     * @return Rule\AbstractRule[]
+     */
     public function getRules(): array
     {
         return $this->rules;
@@ -91,22 +110,30 @@ class Typograf
         return $this->safeBlock;
     }
 
+    /**
+     * @return array<array<array<int, array<string, string>>|string>|string>
+     */
     public function getDebugInfo(): array
     {
         return $this->arDebug;
     }
 
-    protected function initRules()
+    protected function initRules(): void
     {
         $all = (new RuleFinder())->getAllRule();
+
         foreach ($all as $ruleClass) {
-            $this->rules[$ruleClass] = new $ruleClass();
+            /**
+             * @var Rule\AbstractRule
+             */
+            $ruleObj = new $ruleClass();
+            $this->rules[$ruleClass] = $ruleObj;
         }
 
         $this->sortRule();
     }
 
-    protected function sortRule()
+    protected function sortRule(): void
     {
         uasort(
             $this->rules,
@@ -116,7 +143,7 @@ class Typograf
         );
     }
 
-    final protected function changeRule($name, bool $active)
+    final protected function changeRule(string $name, bool $active): void
     {
         if ('*' === $name) {
             foreach ($this->rules as $rule) {

@@ -10,7 +10,7 @@ class AfterDot extends AbstractRule
 
     protected $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([' . $this->char['char'] . '0-9]{2,})\.([А-ЯЁA-Z\n])#u';
 

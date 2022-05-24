@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SafeBlockTest extends TestCase
 {
-    public function testRemoveAllBlock()
+    public function testRemoveAllBlock(): void
     {
         $safe = new SafeBlock();
         $safe->removeAllBlock();

@@ -8,7 +8,7 @@ class IzZaPod extends AbstractRule
 {
     public $name = 'Расстановка дефисов между из-за, из-под';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(из)(\s|&nbsp;)-?(за|под)([' . $this->char['charEnd'] . ']|\s|&nbsp;)#iu';
 

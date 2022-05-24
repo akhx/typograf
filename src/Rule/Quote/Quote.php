@@ -8,6 +8,9 @@ class Quote extends AbstractRule
 {
     public $name = 'Расстановка кавычек правильного вида';
 
+    /**
+     * @var int
+     */
     public $maxLevel = 3;
 
     protected $sort = 300;
@@ -16,12 +19,12 @@ class Quote extends AbstractRule
         'inch' => true,
     ];
 
-    public function replaceQuote($text)
+    public function replaceQuote(string $text): string
     {
         return preg_replace('/&quot;/iu', '"', $text);
     }
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $text = $this->replaceQuote($text);
         $beforeLeft = '\s>[(-';
@@ -55,7 +58,10 @@ class Quote extends AbstractRule
         return $text;
     }
 
-    protected function countQuote($text): array
+    /**
+     * @return int[]
+     */
+    protected function countQuote(string $text): array
     {
         $count = [
             'total' => 0,
@@ -93,6 +99,9 @@ class Quote extends AbstractRule
         $level = $minLevel;
         $result = '';
         $arText = preg_split('/(?<!^)(?!$)/u', $text);
+        if (false === $arText) {
+            return $text;
+        }
 
         for ($i = 0; $i < count($arText); ++$i) {
             $letter = $arText[$i];
@@ -110,9 +119,6 @@ class Quote extends AbstractRule
                 } else {
                     $result .= $this->char['quote']['right'][$level];
                     --$level;
-                    if ($level < $minLevel) {
-                        $level = $minLevel;
-                    }
                 }
             } else {
                 if ('"' === $letter) {

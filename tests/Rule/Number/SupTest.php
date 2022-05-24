@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SupTest extends TestCase
 {
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             ['2^2', '2<sup>2</sup>'],

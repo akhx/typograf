@@ -14,7 +14,7 @@ class ReplaceDash extends AbstractRule
 
     protected $sort = -100;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(\s|&nbsp;)(' . $this->char['allDash'] . '){1,' . $this->settings['len'] . '}(\s|&nbsp;)#iu';
         $replace = $this->char['nbsp'] . $this->char['dash'] . '$3';
