@@ -18,10 +18,11 @@ jobs:
           - 7.3
           - 7.4
           - 8.0
+          - 8.1
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2
@@ -30,25 +31,20 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache
-          key: php-${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: php-${{ matrix.php-version }}-composer-
-
-      - name: Install dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress
+      - name: Composer install
+        uses: ramsey/composer-install@v2
 
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=clover.xml
 
       - name: Upload codecov coverage reporter
+        if: matrix.php-version == '8.1'
         uses: codecov/codecov-action@v2
         with:
           files: clover.xml
-          
+
       - name: Upload codacy coverage reporter
+        if: matrix.php-version == '8.1'
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
