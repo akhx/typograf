@@ -10,7 +10,7 @@ class AfterPunctuation extends AbstractRule
 
     protected $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#(\s|&nbsp;|^)([' . $this->char['char'] . '0-9]+)(\s|&nbsp;)?(:|\)|,|&hellip;|[!?]+)([' . $this->char['char'] . '])#iu';
 

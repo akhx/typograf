@@ -8,7 +8,7 @@ class Math extends AbstractRule
 {
     public $name = 'Математические знаки больше, меньше, плюс, равно, умножить';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#!=#iu',

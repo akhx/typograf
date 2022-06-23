@@ -5,23 +5,25 @@ namespace Akh\Typograf\Tests\Rule\Dash;
 use Akh\Typograf\Rule\Dash\ToLiboNebud;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class ToLiboNebudTest extends TestCase
 {
-
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [
-                "когда то",
-                "когда-то"
+                'когда то',
+                'когда-то',
             ],
             [
-                "<p>когда то</p>",
-                "<p>когда-то</p>"
+                '<p>когда то</p>',
+                '<p>когда-то</p>',
             ],
             [
                 "когда то\nкогда то",
-                "когда-то\nкогда-то"
+                "когда-то\nкогда-то",
             ],
             ['Какой либо', 'Какой-либо'],
             ['откуда либо', 'откуда-либо'],
@@ -31,7 +33,7 @@ class ToLiboNebudTest extends TestCase
             ['Кто нибудь', 'Кто-нибудь'],
             ['кое у кого, кое в чем', 'кое у кого, кое в чем'],
             ['кое с какими', 'кое с какими'],
-            ['когда то&nbsp;мы', 'когда-то мы']
+            ['когда то&nbsp;мы', 'когда-то мы'],
         ];
 
         foreach ($arTests as $arTest) {

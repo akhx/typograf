@@ -2,12 +2,14 @@
 
 namespace Akh\Typograf\Tests\Rule;
 
-use Akh\Typograf\Rule\AbstractRule;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class AbstractRuleTest extends TestCase
 {
-    public function testSetActive()
+    public function testSetActive(): void
     {
         $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         foreach ([false, true] as $flag) {
@@ -16,7 +18,7 @@ class AbstractRuleTest extends TestCase
         }
     }
 
-    public function testSetSort()
+    public function testSetSort(): void
     {
         $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         foreach ([-100, 0, 100, 1000] as $sort) {
@@ -25,7 +27,7 @@ class AbstractRuleTest extends TestCase
         }
     }
 
-    public function testSetSettings()
+    public function testSetSettings(): void
     {
         $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         $arTests = [
@@ -35,7 +37,7 @@ class AbstractRuleTest extends TestCase
             [
                 'len' => '1',
                 'www' => 'www',
-            ]
+            ],
         ];
 
         $arRes = [];
@@ -46,7 +48,7 @@ class AbstractRuleTest extends TestCase
         }
     }
 
-    public function testSetSetting()
+    public function testSetSetting(): void
     {
         $stub = $this->getMockForAbstractClass('\Akh\Typograf\Rule\AbstractRule');
         $arTests = [
@@ -61,7 +63,7 @@ class AbstractRuleTest extends TestCase
             [
                 'www',
                 true,
-            ]
+            ],
         ];
 
         foreach ($arTests as $setting) {

@@ -5,36 +5,38 @@ namespace Akh\Typograf\Tests\Rule\Html;
 use Akh\Typograf\Rule\Html\Paragraph;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class ParagraphTest extends TestCase
 {
-
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [
                 ' 123 дня ',
-                '<p>123 дня</p>'
+                '<p>123 дня</p>',
             ],
             [
                 "123 дня\n123 дня",
-                "<p>123 дня\n123 дня</p>"
+                "<p>123 дня\n123 дня</p>",
             ],
             [
                 '2 кошки',
-                '<p>2 кошки</p>'
+                '<p>2 кошки</p>',
             ],
             [
-                "<p>один параграф</p>",
-                "<p>один параграф</p>"
+                '<p>один параграф</p>',
+                '<p>один параграф</p>',
             ],
             [
-                "   test<p>один параграф</p>",
-                "<p>test</p><p>один параграф</p>"
+                '   test<p>один параграф</p>',
+                '<p>test</p><p>один параграф</p>',
             ],
             [
-                "<p>один параграф</p> test ",
-                "<p>один параграф</p><p>test</p>"
-            ]
+                '<p>один параграф</p> test ',
+                '<p>один параграф</p><p>test</p>',
+            ],
         ];
 
         foreach ($arTests as $arTest) {

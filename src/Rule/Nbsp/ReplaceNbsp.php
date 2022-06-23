@@ -12,7 +12,7 @@ class ReplaceNbsp extends AbstractRule
 
     protected $active = false;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         return str_replace($this->char['nbsp'], ' ', $text);
     }

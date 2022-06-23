@@ -12,11 +12,11 @@ class BeforeShortLastWord extends AbstractRule
         'len' => 3,
     ];
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '}[.!?…])(\s[' . $this->char['char'] . ']|<|$)#iu',
-            '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '})($|<)#iu'
+            '#(\S)\s([' . $this->char['char'] . '\d]{1,' . $this->settings['len'] . '})($|<)#iu',
         ];
 
         $replace = [

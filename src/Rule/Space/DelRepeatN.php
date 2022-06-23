@@ -10,7 +10,7 @@ class DelRepeatN extends AbstractRule
 
     protected $sort = -100;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#\n{2,}#u';
 

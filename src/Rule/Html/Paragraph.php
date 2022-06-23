@@ -12,13 +12,13 @@ class Paragraph extends AbstractRule
 
     protected $sort = 800;
 
-    public function handler($text): string
+    public function handler(string $text): string
     {
         $text = trim($text);
         $first = mb_strpos($text, '<p>');
         $last = mb_strrpos($text, '</p>');
 
-        if ($first !== false && $last !== false) {
+        if (false !== $first && false !== $last) {
             $newText = '';
             $start = trim(mb_substr($text, 0, $first));
 
@@ -41,9 +41,10 @@ class Paragraph extends AbstractRule
         return $this->addParagraph($text);
     }
 
-    protected function addParagraph($text): string
+    protected function addParagraph(string $text): string
     {
         $text = trim($text);
+
         return '<p>' . $text . '</p>';
     }
 }

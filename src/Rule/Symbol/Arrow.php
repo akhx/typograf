@@ -8,20 +8,20 @@ class Arrow extends AbstractRule
 {
     public $name = 'Стрелочки разные -> → →, <- → ←';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#<<#iu',
             '#>>#iu',
             '#(^|[^-])->(?!>)#iu',
-            '#(^|[^<])<-(?!-)#iu'
+            '#(^|[^<])<-(?!-)#iu',
         ];
 
         $replace = [
             '&Lt;',
             '&Gt;',
             '$1&rarr;',
-            '$1&larr;'
+            '$1&larr;',
         ];
 
         return preg_replace($pattern, $replace, $text);

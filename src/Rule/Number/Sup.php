@@ -8,7 +8,7 @@ class Sup extends AbstractRule
 {
     public $name = 'Верхний индекс для ^';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#([' . $this->char['char'] . '0-9])\^([\d]{1,3})([^' . $this->char['char'] . '0-9]|$)#iu';
         $replace = '$1<sup>$2</sup>$3';

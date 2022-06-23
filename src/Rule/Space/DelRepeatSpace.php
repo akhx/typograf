@@ -10,11 +10,11 @@ class DelRepeatSpace extends AbstractRule
 
     protected $sort = -100;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = '#[ \t]{2,}#u';
 
-        $replace = " ";
+        $replace = ' ';
 
         return preg_replace($pattern, $replace, $text);
     }

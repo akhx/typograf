@@ -4,16 +4,25 @@ namespace Akh\Typograf;
 
 class SafeBlock
 {
+    /**
+     * @var string[][]
+     */
     protected $safeBlocks = [];
 
+    /**
+     * @var string[]
+     */
     protected $defaultSafeTags = [
         'head',
         'pre',
         'code',
         'script',
-        'style'
+        'style',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $defaultSafeRegexp = [
         '/<!--(.+?)-->/ius',
         '/<span class=["\']no-typo["\']>(.+?)<\/span>/ius',
@@ -30,53 +39,44 @@ class SafeBlock
         }
     }
 
-    public function removeAllBlock()
+    public function removeAllBlock(): void
     {
         $this->safeBlocks = [];
     }
 
-    public function addTag(string $tag)
+    public function addTag(string $tag): void
     {
         $res = [];
         $res['pattern'] = $this->getPattern(
             [
                 'open' => '<' . preg_quote($tag) . '[^>]*>',
                 'close' => '<\/' . preg_quote($tag) . '>',
-                'tag' => $tag
+                'tag' => $tag,
             ]
         );
 
         $this->addBlock($res);
     }
 
-    public function addRegExp($pattern)
+    public function addRegExp(string $pattern): void
     {
         $this->addBlock(
             [
-                'pattern' => $pattern
+                'pattern' => $pattern,
             ]
         );
     }
 
-    protected function addBlock(array $arBlock)
-    {
-        $this->safeBlocks[] = $arBlock;
-    }
-
-    final protected function getPattern(array $arBlock): string
-    {
-        return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
-    }
-
-    public function on($text)
+    public function on(string $text): string
     {
         $text = $this->safeBlockContent($text);
+
         return $this->safeTagAttr($text);
     }
 
-    public function safeBlockContent($text, $back = false)
+    public function safeBlockContent(string $text, bool $back = false): string
     {
-        $blocks = $back === false ? $this->safeBlocks : array_reverse($this->safeBlocks);
+        $blocks = false === $back ? $this->safeBlocks : array_reverse($this->safeBlocks);
         foreach ($blocks as $block) {
             $text = preg_replace_callback(
                 $block['pattern'],
@@ -84,7 +84,9 @@ class SafeBlock
                     switch ($back) {
                         case true:
                             $safeContent = $this->decrypt($matches[1]);
+
                             break;
+
                         default:
                             $safeContent = $this->encrypt($matches[1]);
                     }
@@ -98,7 +100,7 @@ class SafeBlock
         return $text;
     }
 
-    public function safeTagAttr($text, $back = false)
+    public function safeTagAttr(string $text, bool $back = false): string
     {
         return preg_replace_callback(
             '/<[^\/]([^>]+)>/ius',
@@ -106,7 +108,9 @@ class SafeBlock
                 switch ($back) {
                     case true:
                         $safeContent = $this->decrypt($matches[1]);
+
                         break;
+
                     default:
                         $safeContent = $this->encrypt($matches[1]);
                 }
@@ -117,28 +121,48 @@ class SafeBlock
         );
     }
 
-    protected function decrypt($text): string
+    public function off(string $text): string
     {
-        if (base64_encode(base64_decode($text, true)) === $text) {
+        $text = $this->safeTagAttr($text, true);
+
+        return $this->safeBlockContent($text, true);
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function getBlocks(): array
+    {
+        return $this->safeBlocks;
+    }
+
+    /**
+     * @param string[] $arBlock
+     */
+    protected function addBlock(array $arBlock): void
+    {
+        $this->safeBlocks[] = $arBlock;
+    }
+
+    /**
+     * @param string[] $arBlock
+     */
+    final protected function getPattern(array $arBlock): string
+    {
+        return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
+    }
+
+    protected function decrypt(string $text): string
+    {
+        if (base64_encode((string) base64_decode($text, true)) === $text) {
             return base64_decode($text);
         }
 
         return $text;
     }
 
-    protected function encrypt($text): string
+    protected function encrypt(string $text): string
     {
         return base64_encode($text);
-    }
-
-    public function off($text)
-    {
-        $text = $this->safeTagAttr($text, true);
-        return $this->safeBlockContent($text, true);
-    }
-
-    public function getBlocks(): array
-    {
-        return $this->safeBlocks;
     }
 }

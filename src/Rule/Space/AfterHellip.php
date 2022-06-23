@@ -10,7 +10,7 @@ class AfterHellip extends AbstractRule
 
     protected $sort = 800;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#([' . $this->char['char'] . '])(\.\.\.|…)([А-ЯЁ])#u',
@@ -19,7 +19,7 @@ class AfterHellip extends AbstractRule
 
         $replace = [
             '$1$2 $3',
-            '$1 $2'
+            '$1 $2',
         ];
 
         return preg_replace($pattern, $replace, $text);

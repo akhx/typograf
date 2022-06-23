@@ -5,21 +5,23 @@ namespace Akh\Typograf\Tests\Rule\Space;
 use Akh\Typograf\Rule\Space\DelBeforeLine;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class DelBeforeLineTest extends TestCase
 {
-
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [
                 "Hello world!  \t \n \t \t  Hello world!       \n\n\n\n   \t\t\t   Hello world!\n",
-                "Hello world!  \t \nHello world!       \n\n\n\nHello world!\n"
+                "Hello world!  \t \nHello world!       \n\n\n\nHello world!\n",
             ],
             [
                 "       \t Hello world!  \t \n \t \t  Hello world!\n",
-                "Hello world!  \t \nHello world!\n"
+                "Hello world!  \t \nHello world!\n",
             ],
-            ["   Hello world!    ", "Hello world!    "],
+            ['   Hello world!    ', 'Hello world!    '],
         ];
 
         foreach ($arTests as $arTest) {

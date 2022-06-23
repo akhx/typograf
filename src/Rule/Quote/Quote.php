@@ -8,20 +8,23 @@ class Quote extends AbstractRule
 {
     public $name = 'Расстановка кавычек правильного вида';
 
+    /**
+     * @var int
+     */
+    public $maxLevel = 3;
+
     protected $sort = 300;
 
     protected $settings = [
         'inch' => true,
     ];
 
-    public $maxLevel = 3;
-
-    public function replaceQuote($text)
+    public function replaceQuote(string $text): string
     {
         return preg_replace('/&quot;/iu', '"', $text);
     }
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $text = $this->replaceQuote($text);
         $beforeLeft = '\s>[(-';
@@ -55,10 +58,13 @@ class Quote extends AbstractRule
         return $text;
     }
 
-    protected function countQuote($text): array
+    /**
+     * @return int[]
+     */
+    protected function countQuote(string $text): array
     {
         $count = [
-            'total' => 0
+            'total' => 0,
         ];
         $pattern = '/[' . $this->char['allQuote'] . ']/iu';
 
@@ -69,8 +75,8 @@ class Quote extends AbstractRule
                     $count[$quote] = 0;
                 }
 
-                $count[$quote]++;
-                $count['total']++;
+                ++$count[$quote];
+                ++$count['total'];
             }
         }
 
@@ -79,7 +85,7 @@ class Quote extends AbstractRule
 
     protected function setInch(string $text): string
     {
-        if ($this->settings['inch'] !== true) {
+        if (true !== $this->settings['inch']) {
             return $text;
         }
 
@@ -92,12 +98,12 @@ class Quote extends AbstractRule
         $maxLevel = count($this->char['quote']['left']) - 1;
         $level = $minLevel;
         $result = '';
-        $arText = preg_split('/(?<!^)(?!$)/u', $text);
+        $arText = mb_str_split($text);
 
-        for ($i = 0; $i < count($arText); $i++) {
+        for ($i = 0; $i < count($arText); ++$i) {
             $letter = $arText[$i];
             if ($letter === $this->char['quote']['left'][0]) {
-                $level++;
+                ++$level;
                 if ($level > $maxLevel) {
                     $level = $maxLevel;
                 }
@@ -109,13 +115,10 @@ class Quote extends AbstractRule
                     $result .= $this->char['quote']['right'][$level];
                 } else {
                     $result .= $this->char['quote']['right'][$level];
-                    $level--;
-                    if ($level < $minLevel) {
-                        $level = $minLevel;
-                    }
+                    --$level;
                 }
             } else {
-                if ($letter === '"') {
+                if ('"' === $letter) {
                     $level = $minLevel;
                 }
 
@@ -126,6 +129,7 @@ class Quote extends AbstractRule
         $counts = $this->countQuote($result);
         $leftCount = $counts[$this->char['quote']['left'][0]] ?? null;
         $rightCount = $counts[$this->char['quote']['right'][0]] ?? null;
+
         return $leftCount !== $rightCount ? $text : $result;
     }
 }

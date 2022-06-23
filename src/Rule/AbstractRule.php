@@ -4,8 +4,14 @@ namespace Akh\Typograf\Rule;
 
 abstract class AbstractRule
 {
+    /**
+     * @var string
+     */
     public $name = 'Name rule';
 
+    /**
+     * @var mixed[]
+     */
     protected $char = [
         'allQuote' => '«‹»›„“‟”"\'',
         'allDash' => '-|‒|–|—',
@@ -16,7 +22,7 @@ abstract class AbstractRule
         'dash' => '&mdash;',
         'quote' => [
             'left' => ['«', '„', '‚'],
-            'right' => ['»', '“', '‘']
+            'right' => ['»', '“', '‘'],
         ],
         'month' => 'январь|февраль|март|апрель|май|июнь|июль|август|сентябрь|октябрь|ноябрь|декабрь',
         'monthShort' => 'янв|фев|мар|апр|ма[ейя]|июн|июл|авг|сен|окт|ноя|дек',
@@ -24,13 +30,22 @@ abstract class AbstractRule
         'monthPreCase' => 'январе|феврале|марте|апреле|мае|июне|июле|августе|сентябре|октябре|ноябре|декабре',
     ];
 
+    /**
+     * @var bool
+     */
     protected $active = true;
 
+    /**
+     * @var int
+     */
     protected $sort = 500;
 
+    /**
+     * @var mixed[]
+     */
     protected $settings = [];
 
-    public function setSort(int $sort)
+    public function setSort(int $sort): void
     {
         $this->sort = $sort;
     }
@@ -40,7 +55,7 @@ abstract class AbstractRule
         return $this->sort;
     }
 
-    public function setActive(bool $active)
+    public function setActive(bool $active): void
     {
         $this->active = $active;
     }
@@ -50,20 +65,29 @@ abstract class AbstractRule
         return $this->active;
     }
 
-    public function setSettings(array $settings)
+    /**
+     * @param mixed[] $settings
+     */
+    public function setSettings(array $settings): void
     {
         $this->settings = array_merge($this->settings, $settings);
     }
 
-    public function setSetting(string $key, $value)
+    /**
+     * @param mixed $value
+     */
+    public function setSetting(string $key, $value): void
     {
         $this->settings[$key] = $value;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getSettings(): array
     {
         return $this->settings;
     }
 
-    abstract public function handler($text);
+    abstract public function handler(string $text): string;
 }

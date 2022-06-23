@@ -10,9 +10,8 @@ class ExclamationQuestion extends AbstractRule
 
     public $sort = 800;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
-
         $pattern = '#([' . $this->char['char'] . '])!\?(\s|$|<)#iu';
 
         $replace = '$1?!$2';

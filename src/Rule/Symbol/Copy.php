@@ -8,7 +8,7 @@ class Copy extends AbstractRule
 {
     public $name = 'Копирайт ©, торговая марка ™,®';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#\(r\)#iu',

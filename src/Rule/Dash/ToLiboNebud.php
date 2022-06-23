@@ -9,7 +9,7 @@ class ToLiboNebud extends AbstractRule
     public $name = 'Дефис перед «то», «либо», «нибудь»';
     public $sort = 300;
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $words = [
             'откуда',
@@ -31,7 +31,7 @@ class ToLiboNebud extends AbstractRule
             'кто',
             'кого',
             'кому',
-            'кем'
+            'кем',
         ];
 
         $group = implode('|', $words);
@@ -40,7 +40,7 @@ class ToLiboNebud extends AbstractRule
         return preg_replace_callback(
             $pattern,
             function ($matches) {
-                return $matches[1] . '-' . $matches[3] . ($matches[4] === '&nbsp;' ? ' ' : $matches[4]);
+                return $matches[1] . '-' . $matches[3] . ('&nbsp;' === $matches[4] ? ' ' : $matches[4]);
             },
             $text
         );

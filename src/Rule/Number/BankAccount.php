@@ -8,7 +8,7 @@ class BankAccount extends AbstractRule
 {
     public $name = 'Разбиение номер счёта в банке';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         return preg_replace_callback(
             '#(^| |>|&nbsp;)([0-9]{20})( |<|&nbsp;|$)#mu',

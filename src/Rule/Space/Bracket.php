@@ -8,7 +8,7 @@ class Bracket extends AbstractRule
 {
     public $name = 'Удаление лишних пробелов после открывающей и перед закрывающей скобкой';
 
-    public function handler($text)
+    public function handler(string $text): string
     {
         $pattern = [
             '#(\()\s+#u',
@@ -17,7 +17,7 @@ class Bracket extends AbstractRule
 
         $replace = [
             '(',
-            ')'
+            ')',
         ];
 
         return preg_replace($pattern, $replace, $text);

@@ -5,28 +5,30 @@ namespace Akh\Typograf\Tests\Rule\Space;
 use Akh\Typograf\Rule\Space\Year;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 class YearTest extends TestCase
 {
-
-    public function testHandler()
+    public function testHandler(): void
     {
         $arTests = [
             [
-                "В 2002году",
-                "В 2002 году"
+                'В 2002году',
+                'В 2002 году',
             ],
             [
-                "Шёл 2010год.",
-                "Шёл 2010 год."
+                'Шёл 2010год.',
+                'Шёл 2010 год.',
             ],
             [
                 "на всём протяжении 1997года\n",
-                "на всём протяжении 1997 года\n"
+                "на всём протяжении 1997 года\n",
             ],
             [
                 "\n\nНачавшиеся в 1957году экономические реформы были слишком поверхностными,",
-                "\n\nНачавшиеся в 1957 году экономические реформы были слишком поверхностными,"
-            ]
+                "\n\nНачавшиеся в 1957 году экономические реформы были слишком поверхностными,",
+            ],
         ];
 
         foreach ($arTests as $arTest) {
