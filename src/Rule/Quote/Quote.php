@@ -98,10 +98,7 @@ class Quote extends AbstractRule
         $maxLevel = count($this->char['quote']['left']) - 1;
         $level = $minLevel;
         $result = '';
-        $arText = preg_split('/(?<!^)(?!$)/u', $text);
-        if (false === $arText) {
-            return $text;
-        }
+        $arText = mb_str_split($text);
 
         for ($i = 0; $i < count($arText); ++$i) {
             $letter = $arText[$i];
