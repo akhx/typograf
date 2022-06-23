@@ -36,5 +36,15 @@
     "phpunit/php-code-coverage": "^9.2",
     "friendsofphp/php-cs-fixer": "^3.4",
     "phpstan/phpstan": "^1.7"
+  },
+  "scripts": {
+    "csfixer" : "./vendor/bin/php-cs-fixer fix --dry-run --diff",
+    "csfixer-fix" : "./vendor/bin/php-cs-fixer fix",
+    "phpstan": "./vendor/bin/phpstan analyse",
+    "tests": "./vendor/bin/phpunit",
+    "code-quality": [
+      "@csfixer",
+      "@phpstan"
+    ]
   }
 }
