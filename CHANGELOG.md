@@ -1,5 +1,6 @@
 # Changelog
 ## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.5...HEAD)
+* debug mode
 
 ## [0.4.6](https://github.com/akhx/typograf/compare/v0.4.5...v0.4.6) - 2022-06-23
 * phpStan and cs-fixer

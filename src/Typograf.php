@@ -2,6 +2,8 @@
 
 namespace Akh\Typograf;
 
+use Exception;
+
 class Typograf
 {
     /**
@@ -10,9 +12,9 @@ class Typograf
     protected $rules = [];
 
     /**
-     * @var bool
+     * @var Debug
      */
-    protected $debug = false;
+    protected $debug;
 
     /**
      * @var array<array<array<int, array<string, string>>|string>|string>
@@ -26,7 +28,10 @@ class Typograf
 
     public function __construct(bool $debug = false)
     {
-        $this->debug = $debug;
+        if (true === $debug) {
+            $this->debug = new Debug();
+        }
+
         $this->safeBlock = new SafeBlock();
         $this->initRules();
     }
@@ -45,21 +50,17 @@ class Typograf
     public function apply($text): string
     {
         $text = (string) $text;
+        if (null !== $this->debug) {
+            $this->debug->setStartValue($text);
+        }
+
         $newText = $this->safeBlock->on($text);
 
         foreach ($this->rules as $rule) {
-            if (true === $this->debug) {
-                $arLogRule = [
-                    'rule' => get_class($rule),
-                    'startText' => $newText,
-                ];
-            }
-
+            $startText = $newText;
             if (false === $rule->getActive()) {
-                if (true === $this->debug) {
-                    $arLogRule['endText'] = $newText;
-                    $arLogRule['status'] = 'skip';
-                    $arLog[] = $arLogRule;
+                if (null !== $this->debug) {
+                    $this->debug->addTrace($rule, $startText, $newText, Debug::STATUS_DEACTIVATE);
                 }
 
                 continue;
@@ -67,21 +68,20 @@ class Typograf
 
             $newText = $rule->handler($newText);
 
-            if (true === $this->debug) {
-                $arLogRule['endText'] = $newText;
-                $arLogRule['status'] = $arLogRule['startText'] !== $arLogRule['endText'] ? 'modify' : 'passed';
-                $arLog[] = $arLogRule;
+            if (null !== $this->debug) {
+                $this->debug->addTrace(
+                    $rule,
+                    $startText,
+                    $newText,
+                    $startText !== $newText ? Debug::STATUS_MODIFY : Debug::STATUS_NOT_MODIFY
+                );
             }
         }
 
         $newText = $this->safeBlock->off($newText);
 
-        if (true === $this->debug) {
-            $this->arDebug[] = [
-                'start' => $text,
-                'end' => $newText,
-                'trace' => $arLog ?? [],
-            ];
+        if (null !== $this->debug) {
+            $this->debug->setEndValue($newText);
         }
 
         return $newText;
@@ -111,11 +111,15 @@ class Typograf
     }
 
     /**
-     * @return array<array<array<int, array<string, string>>|string>|string>
+     * @throws Exception
      */
-    public function getDebugInfo(): array
+    public function getDebug(): Debug
     {
-        return $this->arDebug;
+        if (null !== $this->debug) {
+            return $this->debug;
+        }
+
+        throw new Exception('Debug mode not enable');
     }
 
     protected function initRules(): void

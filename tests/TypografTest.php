@@ -2,7 +2,9 @@
 
 namespace Akh\Typograf\Tests;
 
+use Akh\Typograf\Debug;
 use Akh\Typograf\Typograf;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -212,7 +214,15 @@ class TypografTest extends TestCase
     {
         $typo = new Typograf(true);
         $typo->apply('10000');
-        $this->assertSame(count($typo->getDebugInfo()), 1);
+        $this->assertInstanceOf(Debug::class, $typo->getDebug());
+    }
+
+    public function testDebugModeException(): void
+    {
+        $typo = new Typograf();
+        $typo->apply('10000');
+        $this->expectException(Exception::class);
+        $typo->getDebug();
     }
 
     public function testGetSafeBlock(): void
