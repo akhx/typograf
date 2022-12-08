@@ -2,10 +2,6 @@
 
 namespace Akh\Typograf;
 
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use ReflectionClass;
-
 class RuleFinder
 {
     /**
@@ -14,26 +10,26 @@ class RuleFinder
     public static $rules = [];
 
     /**
-     * @throws \ReflectionException
-     *
      * @return string[]
+     *
+     * @throws \ReflectionException
      */
     public static function getAllRule(): array
     {
         if (empty(static::$rules)) {
-            $baseClass = new ReflectionClass('Akh\Typograf\Rule\AbstractRule');
+            $baseClass = new \ReflectionClass('Akh\Typograf\Rule\AbstractRule');
 
-            $files = new RecursiveIteratorIterator(
-                new RecursiveDirectoryIterator(
+            $files = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator(
                     __DIR__ . DIRECTORY_SEPARATOR . 'Rule',
-                    RecursiveDirectoryIterator::SKIP_DOTS
+                    \RecursiveDirectoryIterator::SKIP_DOTS
                 )
             );
 
             foreach ($files as $file) {
                 $className = static::getClassNameByFilePath($file->getPathname());
                 if (class_exists($className)) {
-                    $reflectionClass = new ReflectionClass($className);
+                    $reflectionClass = new \ReflectionClass($className);
                     if ($reflectionClass->isSubclassOf($baseClass)) {
                         static::$rules[] = $className;
                     }
