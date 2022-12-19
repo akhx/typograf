@@ -54,7 +54,7 @@ $typo = new \Akh\Typograf\Typograf();
 $simpleRule = new class extends \Akh\Typograf\Rule\AbstractRule {
     public $name = 'Замена названия сайта';
     protected $sort = 1000;
-    public function handler($text)
+    public function handler(string $text): string
     {
         return str_replace('old.ru', 'new.ru', $text);
     }
