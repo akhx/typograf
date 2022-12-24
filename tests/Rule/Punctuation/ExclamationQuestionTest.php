@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Punctuation;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Punctuation\ExclamationQuestion;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ExclamationQuestionTest extends TestCase
+class ExclamationQuestionTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new ExclamationQuestion();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             ['Опа!???', 'Опа!???'],
             [
                 'Опа!?',
@@ -28,10 +37,5 @@ class ExclamationQuestionTest extends TestCase
             ],
             ['Может домой!?', 'Может домой?!'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new ExclamationQuestion())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

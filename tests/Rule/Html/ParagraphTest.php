@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Html;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Html\Paragraph;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ParagraphTest extends TestCase
+class ParagraphTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Paragraph();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 ' 123 дня ',
                 '<p>123 дня</p>',
@@ -38,10 +47,5 @@ class ParagraphTest extends TestCase
                 '<p>один параграф</p><p>test</p>',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Paragraph())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

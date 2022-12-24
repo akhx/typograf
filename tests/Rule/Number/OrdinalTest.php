@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Number;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Number\Ordinal;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class OrdinalTest extends TestCase
+class OrdinalTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Ordinal();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '5-ая',
                 '5-я',
@@ -34,10 +43,5 @@ class OrdinalTest extends TestCase
             ['Будите 121-ыми', 'Будите 121-ми'],
             ['4-ых', '4-х'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Ordinal())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

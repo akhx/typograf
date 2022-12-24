@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\Bracket;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class BracketTest extends TestCase
+class BracketTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Bracket();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 ' ( ) ',
                 ' () ',
@@ -26,10 +35,5 @@ class BracketTest extends TestCase
                 '     (abc     abc)     (abc)   (a (b (c)))    ',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Bracket())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

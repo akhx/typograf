@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Nbsp;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Nbsp\AfterNumber;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class AfterNumberTest extends TestCase
+class AfterNumberTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new AfterNumber();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 ' 123 дня ',
                 ' 123&nbsp;дня ',
@@ -42,10 +51,5 @@ class AfterNumberTest extends TestCase
                 'Кукурузные палочки Кузя Лакомкин 85&nbsp;г',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new AfterNumber())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

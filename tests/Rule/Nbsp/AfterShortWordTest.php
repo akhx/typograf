@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Nbsp;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Nbsp\AfterShortWord;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class AfterShortWordTest extends TestCase
+class AfterShortWordTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new AfterShortWord();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Повторять, пока;не свернётся в навык.',
                 'Повторять, пока;не свернётся в&nbsp;навык.',
@@ -58,10 +67,5 @@ class AfterShortWordTest extends TestCase
                 'Сказка "О&nbsp;царе Салтане"\nБыль "О&nbsp;солдате',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new AfterShortWord())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

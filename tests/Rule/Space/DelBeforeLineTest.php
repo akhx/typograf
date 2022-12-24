@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\DelBeforeLine;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DelBeforeLineTest extends TestCase
+class DelBeforeLineTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DelBeforeLine();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 "Hello world!  \t \n \t \t  Hello world!       \n\n\n\n   \t\t\t   Hello world!\n",
                 "Hello world!  \t \nHello world!       \n\n\n\nHello world!\n",
@@ -23,10 +32,5 @@ class DelBeforeLineTest extends TestCase
             ],
             ['   Hello world!    ', 'Hello world!    '],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DelBeforeLine())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

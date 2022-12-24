@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Punctuation;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Punctuation\ANo;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ANoTest extends TestCase
+class ANoTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new ANo();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Его лодка скользнула вниз но бедняга держался по-прежнему стойко.',
                 'Его лодка скользнула вниз, но бедняга держался по-прежнему стойко.',
@@ -42,10 +51,5 @@ class ANoTest extends TestCase
                 'никто не отнимет то, что у тебя в голове ( а там может быть умиротворение и счастье)',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new ANo())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

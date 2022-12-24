@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\BeforeBracket;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class BeforeBracketTest extends TestCase
+class BeforeBracketTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new BeforeBracket();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'На половине перегона лес кончился, и с(боков) открылись елани(поля)...(Л. Толстой).',
                 'На половине перегона лес кончился, и с (боков) открылись елани (поля)... (Л. Толстой).',
@@ -30,10 +39,5 @@ class BeforeBracketTest extends TestCase
                 '2*(3+100)/13',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new BeforeBracket())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

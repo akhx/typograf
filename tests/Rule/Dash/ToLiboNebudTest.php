@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Dash;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Dash\ToLiboNebud;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ToLiboNebudTest extends TestCase
+class ToLiboNebudTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new ToLiboNebud();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'когда то',
                 'когда-то',
@@ -35,10 +44,5 @@ class ToLiboNebudTest extends TestCase
             ['кое с какими', 'кое с какими'],
             ['когда то&nbsp;мы', 'когда-то мы'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new ToLiboNebud())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

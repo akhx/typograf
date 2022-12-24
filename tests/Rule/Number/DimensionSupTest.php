@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Number;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Number\DimensionSup;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DimensionSupTest extends TestCase
+class DimensionSupTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DimensionSup();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '2cm2',
                 '2cm<sup>2</sup>',
@@ -31,10 +40,5 @@ class DimensionSupTest extends TestCase
                 'площадь помещения 24м<sup>2</sup>',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DimensionSup())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

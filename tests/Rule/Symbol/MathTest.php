@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Symbol;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Symbol\Math;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class MathTest extends TestCase
+class MathTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Math();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             // ru
             [
                 '2х2',
@@ -38,10 +47,5 @@ class MathTest extends TestCase
             ['50000 +-100', '50000 &plusmn;100'],
             ['10-5=5', '10&minus;5=5'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Math())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

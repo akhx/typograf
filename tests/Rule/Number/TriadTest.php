@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Number;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Number\Triad;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class TriadTest extends TestCase
+class TriadTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Triad();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 "1000\n10000",
                 "1000\n10&thinsp;000",
@@ -58,10 +67,5 @@ class TriadTest extends TestCase
                 'Цена товара 10&thinsp;990 рублей',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Triad())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

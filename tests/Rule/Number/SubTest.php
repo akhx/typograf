@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Number;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Number\Sub;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class SubTest extends TestCase
+class SubTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Sub();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             ['2_{2} 2_{2}', '2<sub>2</sub> 2<sub>2</sub>'],
             [
                 'x_{ab}',
@@ -27,10 +36,5 @@ class SubTest extends TestCase
                 "x<sub>ab</sub>\nx<sub>ab</sub>",
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Sub())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }
