@@ -2,8 +2,6 @@
 
 namespace Akh\Typograf;
 
-use Exception;
-
 class Typograf
 {
     /**
@@ -111,7 +109,7 @@ class Typograf
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function getDebug(): Debug
     {
@@ -119,7 +117,7 @@ class Typograf
             return $this->debug;
         }
 
-        throw new Exception('Debug mode not enable');
+        throw new \Exception('Debug mode not enable');
     }
 
     protected function initRules(): void
