@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\Year;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class YearTest extends TestCase
+class YearTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Year();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'В 2002году',
                 'В 2002 году',
@@ -30,10 +39,5 @@ class YearTest extends TestCase
                 "\n\nНачавшиеся в 1957 году экономические реформы были слишком поверхностными,",
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Year())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

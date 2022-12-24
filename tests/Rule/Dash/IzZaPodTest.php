@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Dash;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Dash\IzZaPod;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class IzZaPodTest extends TestCase
+class IzZaPodTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new IzZaPod();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'из под печки',
                 'из-под печки',
@@ -33,10 +42,5 @@ class IzZaPodTest extends TestCase
             ['  из за&nbsp;гор', '  из-за гор'],
             ['Карниз под покраску', 'Карниз под покраску'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new IzZaPod())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

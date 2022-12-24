@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Punctuation;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Punctuation\Apostrophe;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ApostropheTest extends TestCase
+class ApostropheTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Apostrophe();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Жанна д\'Арк, О\'Коннор, д\'Артаньян',
                 'Жанна д&rsquo;Арк, О&rsquo;Коннор, д&rsquo;Артаньян',
@@ -46,10 +55,5 @@ class ApostropheTest extends TestCase
                 'tables\' legs',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Apostrophe())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

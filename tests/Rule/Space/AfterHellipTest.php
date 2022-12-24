@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\AfterHellip;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class AfterHellipTest extends TestCase
+class AfterHellipTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new AfterHellip();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Простите, государь!..Стоять я не могу...',
                 'Простите, государь!.. Стоять я не могу...',
@@ -38,10 +47,5 @@ class AfterHellipTest extends TestCase
                 'Я спокоен… Но если...',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new AfterHellip())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

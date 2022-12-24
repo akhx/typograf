@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Nbsp;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Nbsp\BeforeParticle;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class BeforeParticleTest extends TestCase
+class BeforeParticleTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new BeforeParticle();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Может ли?',
                 'Может&nbsp;ли?',
@@ -28,10 +37,5 @@ class BeforeParticleTest extends TestCase
             ['Может ли&nbsp;быть?', 'Может&nbsp;ли быть?'],
             ['Может же быть?', 'Может&nbsp;же быть?'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new BeforeParticle())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

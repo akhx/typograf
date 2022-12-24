@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Punctuation;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Punctuation\DelDouble;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DelDoubleTest extends TestCase
+class DelDoubleTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DelDouble();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'У меня была только синяя краска;; но,, несмотря на это,, я затеял нарисовать охоту.',
                 'У меня была только синяя краска; но, несмотря на это, я затеял нарисовать охоту.',
@@ -46,10 +55,5 @@ class DelDoubleTest extends TestCase
                 'Опа!???',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DelDouble())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

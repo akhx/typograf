@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Nbsp;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Nbsp\BeforeShortLastWord;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class BeforeShortLastWordTest extends TestCase
+class BeforeShortLastWordTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new BeforeShortLastWord();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '27 км Новорижского шоссе, влд. 2',
                 '27 км Новорижского шоссе, влд.&nbsp;2',
@@ -46,10 +55,5 @@ class BeforeShortLastWordTest extends TestCase
                 'Голубка дряхлая&nbsp;моя! Куда же ты&nbsp;так.',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new BeforeShortLastWord())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

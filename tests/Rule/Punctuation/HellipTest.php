@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Punctuation;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Punctuation\Hellip;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class HellipTest extends TestCase
+class HellipTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Hellip();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 "Дубровский молчал...\nДубровский молчал...",
                 "Дубровский молчал&hellip;\nДубровский молчал&hellip;",
@@ -42,10 +51,5 @@ class HellipTest extends TestCase
                 '&hellip;',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Hellip())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

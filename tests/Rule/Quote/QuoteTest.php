@@ -2,48 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Quote;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Quote\Quote;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class QuoteTest extends TestCase
+class QuoteTest extends RuleTestCase
 {
-    public function toDo(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
-            [
-                "<p>\"Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. \"</p>",
-                "<p>«Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. »</p>",
-            ],
-            [
-                '“ слово слово “слово” слово”',
-                '" слово слово «слово» слово"',
-            ],
-        ];
+        return new Quote();
     }
 
-    public function testInchDisabled(): void
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
     {
-        $arTests = [
-            [
-                'специально для "клапана на 3/4" или 1/2" (наружная резьба)" нужно дополнительно',
-                'специально для «клапана на 3/4» или 1/2» (наружная резьба)» нужно дополнительно',
-            ],
-        ];
-
-        foreach ($arTests as $arTest) {
-            $rule = new Quote();
-            $rule->setSetting('inch', false);
-            $test = $rule->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
-    }
-
-    public function testHandler(): void
-    {
-        $arTests = [
+        return [
             [
                 'специально для "клапана на 3/4" или 1/2" (наружная резьба)" нужно дополнительно',
                 'специально для «клапана на 3/4″ или 1/2″ (наружная резьба)» нужно дополнительно',
@@ -243,9 +221,35 @@ class QuoteTest extends TestCase
                 '[«история наоборот»]',
             ],
         ];
+    }
+
+    public function toDo(): void
+    {
+        $arTests = [
+            [
+                "<p>\"Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. \"</p>",
+                "<p>«Я всегда с гордостью носил военную форму...</p>\n\n<p>...Я переживал очень тяжёлую депрессию. »</p>",
+            ],
+            [
+                '“ слово слово “слово” слово”',
+                '" слово слово «слово» слово"',
+            ],
+        ];
+    }
+
+    public function testInchDisabled(): void
+    {
+        $arTests = [
+            [
+                'специально для "клапана на 3/4" или 1/2" (наружная резьба)" нужно дополнительно',
+                'специально для «клапана на 3/4» или 1/2» (наружная резьба)» нужно дополнительно',
+            ],
+        ];
 
         foreach ($arTests as $arTest) {
-            $test = (new Quote())->Handler($arTest[0]);
+            $rule = new Quote();
+            $rule->setSetting('inch', false);
+            $test = $rule->Handler($arTest[0]);
             $this->assertSame($test, $arTest[1]);
         }
     }

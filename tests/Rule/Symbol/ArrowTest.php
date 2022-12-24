@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Symbol;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Symbol\Arrow;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ArrowTest extends TestCase
+class ArrowTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Arrow();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 "<-\n<-",
                 "&larr;\n&larr;",
@@ -29,10 +38,5 @@ class ArrowTest extends TestCase
             ['20 + 10 -> 30', '20 + 10 &rarr; 30'],
             ['20 + 10 <- 30', '20 + 10 &larr; 30'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Arrow())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

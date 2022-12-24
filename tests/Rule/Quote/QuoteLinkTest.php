@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Quote;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Quote\QuoteLink;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class QuoteLinkTest extends TestCase
+class QuoteLinkTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new QuoteLink();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'test <a href="/">"Название"</a> test',
                 'test "<a href="/">Название</a>" test',
@@ -22,10 +31,5 @@ class QuoteLinkTest extends TestCase
                 "«<a href=\"/\">Название</a>»\n«<a\nhref=\"/\">Название\n2</a>»",
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new QuoteLink())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

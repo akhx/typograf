@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\AfterDot;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class AfterDotTest extends TestCase
+class AfterDotTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new AfterDot();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Всё. Конец',
                 'Всё. Конец',
@@ -34,10 +43,5 @@ class AfterDotTest extends TestCase
                 "Солнце садилось за горизонт. \nСолнце садилось за горизонт.",
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new AfterDot())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

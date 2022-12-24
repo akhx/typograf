@@ -4,7 +4,6 @@ namespace Akh\Typograf\Tests;
 
 use Akh\Typograf\Debug;
 use Akh\Typograf\Typograf;
-use Exception;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -221,7 +220,7 @@ class TypografTest extends TestCase
     {
         $typo = new Typograf();
         $typo->apply('10000');
-        $this->expectException(Exception::class);
+        $this->expectException(\Exception::class);
         $typo->getDebug();
     }
 

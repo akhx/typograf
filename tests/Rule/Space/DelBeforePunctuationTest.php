@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\DelBeforePunctuation;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DelBeforePunctuationTest extends TestCase
+class DelBeforePunctuationTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DelBeforePunctuation();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'В неполном предложении отсутствует один или несколько членов , значение которых понятно из контекста или из ситуации.',
                 'В неполном предложении отсутствует один или несколько членов, значение которых понятно из контекста или из ситуации.',
@@ -34,10 +43,5 @@ class DelBeforePunctuationTest extends TestCase
                 'Were the visitors shown the new pictures?',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DelBeforePunctuation())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

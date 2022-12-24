@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Space;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Space\DelRepeatSpace;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DelRepeatSpaceTest extends TestCase
+class DelRepeatSpaceTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DelRepeatSpace();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 "     a   \t   ",
                 ' a ',
@@ -26,10 +35,5 @@ class DelRepeatSpaceTest extends TestCase
                 " \n \n Hello world ! \n \n ",
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DelRepeatSpace())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Dash;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Dash\ReplaceDash;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class ReplaceDashTest extends TestCase
+class ReplaceDashTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new ReplaceDash();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 'Правда - небольшая ложь',
                 'Правда&nbsp;&mdash; небольшая ложь',
@@ -42,10 +51,5 @@ class ReplaceDashTest extends TestCase
                 'одно- или двухэтажный корпус',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new ReplaceDash())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

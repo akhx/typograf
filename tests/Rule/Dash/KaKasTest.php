@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Dash;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Dash\KaKas;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class KaKasTest extends TestCase
+class KaKasTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new KaKas();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '<p>скажите ка на ка? на-кась!</p>',
                 '<p>скажите-ка на-ка? на-кась!</p>',
@@ -34,10 +43,5 @@ class KaKasTest extends TestCase
                 'нате-кась',
             ],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new KaKas())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

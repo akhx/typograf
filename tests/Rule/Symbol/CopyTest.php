@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Symbol;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Symbol\Copy;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class CopyTest extends TestCase
+class CopyTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new Copy();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '<p>(c)</p>',
                 '<p>&copy;</p>',
@@ -28,10 +37,5 @@ class CopyTest extends TestCase
             ['(r)', '&reg;'],
             ['(tm)', '&trade;'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new Copy())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }

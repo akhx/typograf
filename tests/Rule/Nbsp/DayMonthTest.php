@@ -2,17 +2,26 @@
 
 namespace Akh\Typograf\Tests\Rule\Nbsp;
 
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Rule\Nbsp\DayMonth;
-use PHPUnit\Framework\TestCase;
+use Akh\Typograf\Tests\Rule\RuleTestCase;
 
 /**
  * @internal
  */
-class DayMonthTest extends TestCase
+class DayMonthTest extends RuleTestCase
 {
-    public function testHandler(): void
+    public function getRule(): AbstractRule
     {
-        $arTests = [
+        return new DayMonth();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function dataProvider(): array
+    {
+        return [
             [
                 '20 декабря',
                 '20&nbsp;декабря',
@@ -28,10 +37,5 @@ class DayMonthTest extends TestCase
             ['20 дек 2010', '20&nbsp;дек 2010'],
             ['1 мая 2015', '1&nbsp;мая 2015'],
         ];
-
-        foreach ($arTests as $arTest) {
-            $test = (new DayMonth())->Handler($arTest[0]);
-            $this->assertSame($test, $arTest[1]);
-        }
     }
 }
