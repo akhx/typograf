@@ -10,12 +10,12 @@ class IzZaPod extends AbstractRule
 
     public function handler(string $text): string
     {
-        $pattern = '#(из)(\s|&nbsp;)-?(за|под)([' . $this->char['charEnd'] . ']|\s|&nbsp;)#iu';
+        $pattern = '#(^|>|\s|&nbsp;)(из)(\s|&nbsp;)-?(за|под)([' . $this->char['charEnd'] . ']|\s|&nbsp;)#iu';
 
         return preg_replace_callback(
             $pattern,
             function ($matches) {
-                return $matches[1] . '-' . $matches[3] . ('&nbsp;' === $matches[4] ? ' ' : $matches[4]);
+                return $matches[1] . $matches[2] . '-' . $matches[4] . ('&nbsp;' === $matches[5] ? ' ' : $matches[5]);
             },
             $text
         );
