@@ -15,7 +15,7 @@ class AfterShortWord extends AbstractRule
     public function handler(string $text): string
     {
         $before = '\s(' . $this->char['allQuote'];
-        $pattern = '#(^|' . $this->char['nbsp'] . '|[a-z];|[' . $before . '])([' . $this->char['char'] . ']{1,' . $this->settings['len'] . '})\s#iu';
+        $pattern = '#(^|' . $this->char['nbsp'] . '|[a-z0-9];|[' . $before . '])([' . $this->char['char'] . ']{1,' . $this->settings['len'] . '})\s#iu';
         $replace = '$1$2' . $this->char['nbsp'];
 
         /**
