@@ -15,11 +15,11 @@ class AfterShortWord extends AbstractRule
     public function handler(string $text): string
     {
         $before = '\s(' . $this->char['allQuote'];
-        $pattern = '#(^|' . $this->char['nbsp'] . '|[' . $before . '])([' . $this->char['char'] . ']{1,' . $this->settings['len'] . '})\s#iu';
+        $pattern = '#(^|' . $this->char['nbsp'] . '|[a-z];|[' . $before . '])([' . $this->char['char'] . ']{1,' . $this->settings['len'] . '})\s#iu';
         $replace = '$1$2' . $this->char['nbsp'];
 
         /**
-         * Преобразовение вызывается 2 раза
+         * Преобразование вызывается 2 раза
          */
         $text = preg_replace($pattern, $replace, $text);
 
