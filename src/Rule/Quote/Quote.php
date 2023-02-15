@@ -17,11 +17,33 @@ class Quote extends AbstractRule
 
     protected $settings = [
         'inch' => true,
+        'quote' => [
+            'left' => ['«', '„', '‚'],
+            'right' => ['»', '“', '‘'],
+        ],
+        'replace' => [
+            '&quot;' => '"',
+            '&laquo;' => '«',
+            '&raquo;' => '»',
+            '&lsaquo;' => '‹',
+            '&rsaquo;' => '›',
+            '&bdquo;' => '„',
+            '&ldquo;' => '“',
+            '&#8223;' => '‟',
+            '&rdquo;' => '”',
+            '&apos;' => '\'',
+        ],
     ];
 
-    public function replaceQuote(string $text): string
+    public function replaceQuote(string $text, bool $back = false): string
     {
-        return preg_replace('/&quot;/iu', '"', $text);
+        $data = $back ? array_flip($this->settings['replace']) : $this->settings['replace'];
+
+        foreach ($data as $uni => $html) {
+            $text = preg_replace('/' . $uni . '/iu', $html, $text);
+        }
+
+        return $text;
     }
 
     public function handler(string $text): string
@@ -36,7 +58,7 @@ class Quote extends AbstractRule
         $text = preg_replace_callback(
             $patternLeft,
             function ($matches) {
-                return $matches[1] . str_repeat($this->char['quote']['left'][0], mb_strlen($matches[2]));
+                return $matches[1] . str_repeat($this->settings['quote']['left'][0], mb_strlen($matches[2]));
             },
             $text
         );
@@ -44,18 +66,18 @@ class Quote extends AbstractRule
         $text = preg_replace_callback(
             $patternRight,
             function ($matches) {
-                return $matches[1] . str_repeat($this->char['quote']['right'][0], mb_strlen($matches[2]));
+                return $matches[1] . str_repeat($this->settings['quote']['right'][0], mb_strlen($matches[2]));
             },
             $text
         );
 
         $text = $this->setInch($text);
 
-        if (isset($this->char['quote']['left'][1]) && $this->char['quote']['left'][0] !== $this->char['quote']['left'][1]) {
+        if (isset($this->settings['quote']['left'][1]) && $this->settings['quote']['left'][0] !== $this->settings['quote']['left'][1]) {
             $text = $this->setInner($text);
         }
 
-        return $text;
+        return $this->replaceQuote($text, true);
     }
 
     /**
@@ -95,26 +117,26 @@ class Quote extends AbstractRule
     protected function setInner(string $text): string
     {
         $minLevel = -1;
-        $maxLevel = count($this->char['quote']['left']) - 1;
+        $maxLevel = count($this->settings['quote']['left']) - 1;
         $level = $minLevel;
         $result = '';
         $arText = mb_str_split($text);
 
         for ($i = 0; $i < count($arText); ++$i) {
             $letter = $arText[$i];
-            if ($letter === $this->char['quote']['left'][0]) {
+            if ($letter === $this->settings['quote']['left'][0]) {
                 ++$level;
                 if ($level > $maxLevel) {
                     $level = $maxLevel;
                 }
 
-                $result .= $this->char['quote']['left'][$level];
-            } elseif ($letter === $this->char['quote']['right'][0]) {
+                $result .= $this->settings['quote']['left'][$level];
+            } elseif ($letter === $this->settings['quote']['right'][0]) {
                 if ($level <= $minLevel) {
                     $level = 0;
-                    $result .= $this->char['quote']['right'][$level];
+                    $result .= $this->settings['quote']['right'][$level];
                 } else {
-                    $result .= $this->char['quote']['right'][$level];
+                    $result .= $this->settings['quote']['right'][$level];
                     --$level;
                 }
             } else {
@@ -127,8 +149,8 @@ class Quote extends AbstractRule
         }
 
         $counts = $this->countQuote($result);
-        $leftCount = $counts[$this->char['quote']['left'][0]] ?? null;
-        $rightCount = $counts[$this->char['quote']['right'][0]] ?? null;
+        $leftCount = $counts[$this->settings['quote']['left'][0]] ?? null;
+        $rightCount = $counts[$this->settings['quote']['right'][0]] ?? null;
 
         return $leftCount !== $rightCount ? $text : $result;
     }
