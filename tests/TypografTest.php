@@ -82,23 +82,23 @@ class TypografTest extends TestCase
             ],
             [
                 'специально для "клапана на 3/4" или 1/2" (наружная резьба)" нужно дополнительно',
-                'специально для «клапана на&nbsp;3/4″ или 1/2″ (наружная резьба)» нужно дополнительно',
+                'специально для &laquo;клапана на&nbsp;3/4″ или 1/2″ (наружная резьба)&raquo; нужно дополнительно',
             ],
             [
                 'Вот у вас "Мой спутник, "это "не "сочинение" это" хорошо, потому" это хорошо, потому что не выдумано."',
-                'Вот у&nbsp;вас «Мой спутник, «это «не&nbsp;«сочинение» это» хорошо, потому» это хорошо, потому что не&nbsp;выдумано.»',
+                'Вот у&nbsp;вас &laquo;Мой спутник, &laquo;это &laquo;не&nbsp;&laquo;сочинение&raquo; это&raquo; хорошо, потому&raquo; это хорошо, потому что не&nbsp;выдумано.&raquo;',
             ],
             [
                 '««Цыганы» мои не продаются вовсе»',
-                '«„Цыганы“ мои не&nbsp;продаются вовсе»',
+                '&laquo;&bdquo;Цыганы&ldquo; мои не&nbsp;продаются вовсе&raquo;',
             ],
             [
                 '"Пример"',
-                '«Пример»',
+                '&laquo;Пример&raquo;',
             ],
             [
                 'ОАО "Пример"',
-                'ОАО «Пример»',
+                'ОАО &laquo;Пример&raquo;',
             ],
         ];
         foreach ($arTests as $arTest) {
@@ -168,7 +168,7 @@ class TypografTest extends TestCase
                 text my&nbsp;text
                 <span class="no-typo">"Пример"</span>
                 <pre></pre>
-                <p>«Пример»</p>
+                <p>&laquo;Пример&raquo;</p>
                 <!-- hidden a text -->
                 <pre data-test="asd" data-a="asd" class="" title="asd">
                     qwe
@@ -177,7 +177,7 @@ class TypografTest extends TestCase
                     a a
                 </pre>
                 <!-- test "text" -->
-                <p>«Пример»</p>
+                <p>&laquo;Пример&raquo;</p>
                 <style>
                     .class {
                         color: red;

@@ -66,6 +66,10 @@ class AfterShortWordTest extends RuleTestCase
                 'Сказка "О царе Салтане"\nБыль "О солдате',
                 'Сказка "О&nbsp;царе Салтане"\nБыль "О&nbsp;солдате',
             ],
+            [
+                'это &laquo;не &laquo;сочинение&raquo; это&raquo хорошо',
+                'это &laquo;не&nbsp;&laquo;сочинение&raquo; это&raquo хорошо',
+            ],
         ];
     }
 }
