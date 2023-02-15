@@ -1,7 +1,10 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.7...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.8...HEAD)
+
+## [0.4.7](https://github.com/akhx/typograf/compare/v0.4.7...v0.4.8) - 2023-02-15
 * fix README
 * debug mode
+* replace quote to html entity
 
 ## [0.4.6](https://github.com/akhx/typograf/compare/v0.4.6...v0.4.7) - 2022-12-08
 * fix izZaPod
