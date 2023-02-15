@@ -228,7 +228,6 @@ class QuoteTest extends RuleTestCase
                 '&raquo;история наоборот&raquo;',
                 '&laquo;история наоборот&raquo;',
             ],
-
         ];
     }
 
