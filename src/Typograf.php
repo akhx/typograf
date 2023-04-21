@@ -126,7 +126,7 @@ class Typograf
 
         foreach ($all as $ruleClass) {
             /**
-             * @var Rule\AbstractRule
+             * @var Rule\AbstractRule $ruleObj
              */
             $ruleObj = new $ruleClass();
             $this->rules[$ruleClass] = $ruleObj;
