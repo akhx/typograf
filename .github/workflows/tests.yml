@@ -20,6 +20,7 @@ jobs:
           - 8.0
           - 8.1
           - 8.2
+          - 8.3
 
     steps:
       - name: Checkout
@@ -39,13 +40,13 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=clover.xml
 
       - name: Upload codecov coverage reporter
-        if: matrix.php-version == '8.2'
+        if: matrix.php-version == '8.3'
         uses: codecov/codecov-action@v2
         with:
           files: clover.xml
 
       - name: Upload codacy coverage reporter
-        if: matrix.php-version == '8.2'
+        if: matrix.php-version == '8.3'
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
