@@ -3,6 +3,7 @@
 namespace Akh\Typograf\Tests;
 
 use Akh\Typograf\Debug;
+use Akh\Typograf\Rule\AbstractRule;
 use Akh\Typograf\Typograf;
 use PHPUnit\Framework\TestCase;
 
@@ -196,7 +197,7 @@ class TypografTest extends TestCase
     public function testAddRule(): void
     {
         $typo = new Typograf();
-        $simpleRule = new class() extends \Akh\Typograf\Rule\AbstractRule {
+        $simpleRule = new class() extends AbstractRule {
             public $name = 'Замена названия сайта';
             protected $sort = -200;
 

@@ -28,9 +28,7 @@ class Debug
      */
     private $trace = [];
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function setStartValue(string $startValue): void
     {
