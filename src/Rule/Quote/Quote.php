@@ -111,7 +111,7 @@ class Quote extends AbstractRule
             return $text;
         }
 
-        return preg_replace('/(^|[0-9])\/([0-9]+)(»)/u', '$1/$2″', $text);
+        return preg_replace('/(^|[0-9])([\/,.])([0-9]+)(»)/u', '$1$2$3″', $text);
     }
 
     protected function setInner(string $text): string
