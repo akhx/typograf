@@ -31,6 +31,10 @@ class InitialsTest extends RuleTestCase
                 'А.&nbsp;С.&nbsp;Пушкин',
             ],
             [
+                '<p>А.С. Пушкин</p>',
+                '<p>А.&nbsp;С.&nbsp;Пушкин</p>',
+            ],
+            [
                 'А.С. Пушкин-Кукушкин',
                 'А.&nbsp;С.&nbsp;Пушкин-Кукушкин',
             ],
