@@ -1,5 +1,8 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.4.10...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.5.0...HEAD)
+
+## [0.5.0](https://github.com/akhx/typograf/compare/v0.4.10...v0.5.0) - 2024-08-08
+* добавлено правило неразрывных пробелов инициалов и фамилии
 
 ## [0.4.10](https://github.com/akhx/typograf/compare/v0.4.9...v0.4.10) - 2024-02-20
 * support php 8.3
