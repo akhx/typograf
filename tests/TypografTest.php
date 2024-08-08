@@ -197,7 +197,7 @@ class TypografTest extends TestCase
     public function testAddRule(): void
     {
         $typo = new Typograf();
-        $simpleRule = new class() extends AbstractRule {
+        $simpleRule = new class extends AbstractRule {
             public $name = 'Замена названия сайта';
             protected $sort = -200;
 
