@@ -25,8 +25,14 @@ class SafeBlock
      */
     protected $defaultSafeRegexp = [
         '/<!--(.+?)-->/ius',
+        '/\[[a-z]([^]]+)]/ius',
         '/<span class=["\']no-typo["\']>(.+?)<\/span>/ius',
     ];
+
+    /**
+     * @var mixed[]
+     */
+    private $memory = [];
 
     public function __construct()
     {
@@ -37,11 +43,6 @@ class SafeBlock
         foreach ($this->defaultSafeRegexp as $regExp) {
             $this->addRegExp($regExp);
         }
-    }
-
-    public function removeAllBlock(): void
-    {
-        $this->safeBlocks = [];
     }
 
     public function addTag(string $tag): void
@@ -69,6 +70,7 @@ class SafeBlock
 
     public function on(string $text): string
     {
+        $this->memory = [];
         $text = $this->safeBlockContent($text);
 
         return $this->safeTagAttr($text);
@@ -76,20 +78,25 @@ class SafeBlock
 
     public function safeBlockContent(string $text, bool $back = false): string
     {
+        $key = 'bc';
+        $i = false === $back ? 1 : count($this->memory[$key] ?? []);
         $blocks = false === $back ? $this->safeBlocks : array_reverse($this->safeBlocks);
+
         foreach ($blocks as $block) {
             $text = preg_replace_callback(
                 $block['pattern'],
-                function ($matches) use ($back) {
+                function ($matches) use (&$i, $key, $back) {
                     switch ($back) {
                         case true:
-                            $safeContent = $this->decrypt($matches[1]);
+                            $safeContent = $this->unSafe($matches[1]);
 
                             break;
 
                         default:
-                            $safeContent = $this->encrypt($matches[1]);
+                            $safeContent = $this->safe($key, $i, $matches[1]);
                     }
+
+                    false === $back ? ++$i : $i--;
 
                     return str_replace($matches[1], $safeContent, $matches[0]);
                 },
@@ -102,18 +109,22 @@ class SafeBlock
 
     public function safeTagAttr(string $text, bool $back = false): string
     {
+        $i = 1;
+
         return preg_replace_callback(
             '/<[^\/]([^>]+)>/ius',
-            function ($matches) use ($back) {
+            function ($matches) use (&$i, $back) {
                 switch ($back) {
                     case true:
-                        $safeContent = $this->decrypt($matches[1]);
+                        $safeContent = $this->unSafe($matches[1]);
 
                         break;
 
                     default:
-                        $safeContent = $this->encrypt($matches[1]);
+                        $safeContent = $this->safe('tag', $i, $matches[1]);
                 }
+
+                ++$i;
 
                 return str_replace($matches[1], $safeContent, $matches[0]);
             },
@@ -126,14 +137,6 @@ class SafeBlock
         $text = $this->safeTagAttr($text, true);
 
         return $this->safeBlockContent($text, true);
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function getBlocks(): array
-    {
-        return $this->safeBlocks;
     }
 
     /**
@@ -152,17 +155,26 @@ class SafeBlock
         return '/' . $arBlock['open'] . '(.*?)' . $arBlock['close'] . '/ius';
     }
 
-    protected function decrypt(string $text): string
+    private function safe(string $key, int $i, string $text): string
     {
-        if (base64_encode((string) base64_decode($text, true)) === $text) {
-            return base64_decode($text);
-        }
+        $this->memory[$key][$i] = $text;
 
-        return $text;
+        return sprintf('##%s_%s##', $key, $i);
     }
 
-    protected function encrypt(string $text): string
+    private function unSafe(string $key): string
     {
-        return base64_encode($text);
+        $key = trim($key, '#');
+        if ('' === $key) {
+            return '';
+        }
+
+        if (false === strpos($key, '_')) {
+            return $key;
+        }
+
+        list($key, $i) = explode('_', $key, 2);
+
+        return $this->memory[$key][$i] ?? '';
     }
 }

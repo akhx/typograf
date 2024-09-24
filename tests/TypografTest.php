@@ -132,6 +132,7 @@ class TypografTest extends TestCase
                 text my text
                 <span class="no-typo">"Пример"</span>
                 <pre></pre>
+                [gallery ids="100,101,102"]
                 <p>"Пример"</p>
                 <!-- hidden a text -->
                 <pre data-test="asd" data-a="asd" class="" title="asd">
@@ -169,6 +170,7 @@ class TypografTest extends TestCase
                 text my&nbsp;text
                 <span class="no-typo">"Пример"</span>
                 <pre></pre>
+                [gallery ids="100,101,102"]
                 <p>&laquo;Пример&raquo;</p>
                 <!-- hidden a text -->
                 <pre data-test="asd" data-a="asd" class="" title="asd">
