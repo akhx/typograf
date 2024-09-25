@@ -15,11 +15,6 @@ class Typograf
     protected $debug;
 
     /**
-     * @var array<array<array<int, array<string, string>>|string>|string>
-     */
-    protected $arDebug = [];
-
-    /**
      * @var SafeBlock
      */
     protected $safeBlock;

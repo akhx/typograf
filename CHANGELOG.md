@@ -1,5 +1,8 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.5.0...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.6.0...HEAD)
+
+## [0.6.0](https://github.com/akhx/typograf/compare/v0.5.0...v0.6.0) - 2024-09-25
+* переработан SafeBlock
 
 ## [0.5.0](https://github.com/akhx/typograf/compare/v0.4.10...v0.5.0) - 2024-08-08
 * добавлено правило неразрывных пробелов инициалов и фамилии
