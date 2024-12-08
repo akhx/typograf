@@ -27,6 +27,7 @@ class SafeBlock
         '/<!--(.+?)-->/ius',
         '/\[[a-z]([^]]+)]/ius',
         '/<span class=["\']no-typo["\']>(.+?)<\/span>/ius',
+        '/https?:\/\/?([^<\'"[\s]+)/ius',
     ];
 
     /**

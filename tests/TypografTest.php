@@ -143,6 +143,9 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>"Пример"</p>
+                https://www.domain.com/path/test-05-09-2024/
+                <a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>
+                [embed]https://domain.com/path/test-05-09-2024/[/embed]
                 <style>
                     .class {
                         color: red;
@@ -181,6 +184,9 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>&laquo;Пример&raquo;</p>
+                https://www.domain.com/path/test-05-09-2024/
+                <a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>
+                [embed]https://domain.com/path/test-05-09-2024/[/embed]
                 <style>
                     .class {
                         color: red;
