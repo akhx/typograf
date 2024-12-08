@@ -8,6 +8,8 @@ class Address extends AbstractRule
 {
     public $name = 'Неразрывной пробел а адресах г. ул. кв.';
 
+    protected $sort = 450;
+
     public function handler(string $text): string
     {
         $pattern = [

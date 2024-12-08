@@ -1,6 +1,6 @@
 ## Nbsp
 | Класс | Название | Сортировка | Активность | Параметры |
-| --- | --- | --- | --- | --- |
+| --- | --- | -- | --- | --- |
 | [Nbsp\ReplaceNbsp](../src/Rule/Nbsp/ReplaceNbsp.php) | Замена неразрывного пробела на&nbsp;обычный перед типографированием | -100 | выкл | &nbsp; |
 | [Nbsp\AfterNumber](../src/Rule/Nbsp/AfterNumber.php) | Неразрывной пробел, после чисел | 500 | вкл | maxLen = 5 |
 | [Nbsp\AfterShortWord](../src/Rule/Nbsp/AfterShortWord.php) | Неразрывной пробел, после короткого слова | 500 | вкл | len = 2 |
@@ -8,7 +8,7 @@
 | [Nbsp\DayMonth](../src/Rule/Nbsp/DayMonth.php) | Нераз. пробел между числом и&nbsp;месяцем | 500 | вкл | &nbsp; |
 | [Nbsp\BeforeParticle](../src/Rule/Nbsp/BeforeParticle.php) | Нераз. пробел перед «ли», «ль», «же», «бы», «б» | 510 | вкл | &nbsp; |
 | [Nbsp\Initials](../src/Rule/Nbsp/Initials.php) | Неразрывной пробел инициалов и&nbsp;фамилии | 500 | вкл | &nbsp; |
-| [Nbsp\Address](../src/Rule/Nbsp/Address.php) | Неразрывной пробел, а&nbsp;адресах г.&nbsp;ул.&nbsp;кв. | 500 | вкл | &nbsp; |
+| [Nbsp\Address](../src/Rule/Nbsp/Address.php) | Неразрывной пробел, а&nbsp;адресах г.&nbsp;ул.&nbsp;кв. | 450 | вкл | &nbsp; |
 ## Dash
 | Класс | Название | Сортировка | Активность | Параметры |
 | --- | --- | --- | --- | --- |
