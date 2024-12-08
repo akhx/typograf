@@ -8,6 +8,7 @@
 | [Nbsp\DayMonth](../src/Rule/Nbsp/DayMonth.php) | Нераз. пробел между числом и&nbsp;месяцем | 500 | вкл | &nbsp; |
 | [Nbsp\BeforeParticle](../src/Rule/Nbsp/BeforeParticle.php) | Нераз. пробел перед «ли», «ль», «же», «бы», «б» | 510 | вкл | &nbsp; |
 | [Nbsp\Initials](../src/Rule/Nbsp/Initials.php) | Неразрывной пробел инициалов и&nbsp;фамилии | 500 | вкл | &nbsp; |
+| [Nbsp\Address](../src/Rule/Nbsp/Address.php) | Неразрывной пробел, а&nbsp;адресах г.&nbsp;ул.&nbsp;кв. | 500 | вкл | &nbsp; |
 ## Dash
 | Класс | Название | Сортировка | Активность | Параметры |
 | --- | --- | --- | --- | --- |

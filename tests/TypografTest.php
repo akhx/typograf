@@ -143,6 +143,7 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>"Пример"</p>
+                <p>Наш адрес: Россия, г. Саратов, ул. Антонова, дом 25, кв. 72.</p>
                 <style>
                     .class {
                         color: red;
@@ -181,6 +182,7 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>&laquo;Пример&raquo;</p>
+                <p>Наш адрес: Россия, г.&nbsp;Саратов, ул.&nbsp;Антонова, дом&nbsp;25, кв.&nbsp;72.</p>
                 <style>
                     .class {
                         color: red;
