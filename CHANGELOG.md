@@ -1,6 +1,9 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.6.0...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.7.0...HEAD)
+
+## [0.7.0](https://github.com/akhx/typograf/compare/v0.6.0...v0.7.0) - 2024-12-08
 * url добавлен в safeBlock
+* новое правило для работы с адресами
 
 ## [0.6.0](https://github.com/akhx/typograf/compare/v0.5.0...v0.6.0) - 2024-09-25
 * переработан SafeBlock

@@ -143,6 +143,7 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>"Пример"</p>
+                <p>Наш адрес: Россия, г. Саратов, ул. Антонова, дом 25, кв. 72.</p>
                 https://www.domain.com/path/test-05-09-2024/
                 <a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>
                 [embed]https://domain.com/path/test-05-09-2024/[/embed]
@@ -184,6 +185,7 @@ class TypografTest extends TestCase
                 </pre>
                 <!-- test "text" -->
                 <p>&laquo;Пример&raquo;</p>
+                <p>Наш адрес: Россия, г.&nbsp;Саратов, ул.&nbsp;Антонова, дом&nbsp;25, кв.&nbsp;72.</p>
                 https://www.domain.com/path/test-05-09-2024/
                 <a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>
                 [embed]https://domain.com/path/test-05-09-2024/[/embed]
