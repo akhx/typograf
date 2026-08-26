@@ -113,7 +113,7 @@ class SafeBlock
         $i = 1;
 
         return preg_replace_callback(
-            '/<[^\/]([^>]+)>/ius',
+            '/<([^\/][^>]+)>/ius',
             function ($matches) use (&$i, $back) {
                 switch ($back) {
                     case true:

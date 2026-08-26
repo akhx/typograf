@@ -1,5 +1,8 @@
 # Changelog
-## [Unreleased](https://github.com/akhx/typograf/compare/v0.7.0...HEAD)
+## [Unreleased](https://github.com/akhx/typograf/compare/v0.7.1...HEAD)
+
+## [0.7.1](https://github.com/akhx/typograf/compare/v0.7.0...v0.7.1) - 2026-08-26
+* ошибка safeblock, при тегах из одинаковых букв - dd
 
 ## [0.7.0](https://github.com/akhx/typograf/compare/v0.6.0...v0.7.0) - 2024-12-08
 * url добавлен в safeBlock
