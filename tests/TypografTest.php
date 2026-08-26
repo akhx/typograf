@@ -46,6 +46,10 @@ class TypografTest extends TestCase
                 "+7&thinsp;926&thinsp;999&ndash;99&ndash;99",
             ],*/
             [
+                '<dd>Привет</dd><a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>',
+                '<dd>Привет</dd><a href="https://domain.com/path/test-05-09-2024/">https://domain.com/path/test-05-09-2024/</a>',
+            ],
+            [
                 123,
                 '123',
             ],
